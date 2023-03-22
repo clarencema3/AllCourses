@@ -69,6 +69,7 @@
   padding: 0px 1px;
   position: relative;
   right: 65px;
+  background-color: white;
 }
 
 
@@ -81,6 +82,7 @@
   padding: 2px 0px;
   border-radius: 5px;
   cursor: not-allowed;
+  background-color: white;
 }
 
 .profile-dropdown-user:hover {
@@ -100,6 +102,7 @@
   height: 33px;
   padding-top: 5px;
   border-radius: 5px;
+  background-color: white;
 }
 
 .profile-dropdown-logout:hover {
@@ -126,7 +129,7 @@
 
 .login-sign-btn {
   border: none;
-  background-color: transparent;
+  background-color: white;
   font-size: 13px;
   font-weight: bold;
   border-radius: 3px;

@@ -9,7 +9,12 @@ course_routes = Blueprint('course', __name__)
 @course_routes.route('/')
 def get_all_courses():
     courses = Course.query.all()
-    return [course.to_dict() for course in courses]
+    course_arr = []
+    for course in courses:
+        courseDictionary = course.to_dict()
+        courseDictionary['photos'] = [photo.to_dict() for photo in course.photos]
+        course_arr.append(courseDictionary)
+    return course_arr
 
 
 @course_routes.route('/<int:id>')
