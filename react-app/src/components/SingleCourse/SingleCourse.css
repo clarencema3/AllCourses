@@ -1,0 +1,71 @@
+.single-page-div {
+    width: 100%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+.single-course-info {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px darkgray;
+}
+
+.img-overlay {
+    height: 0px;
+}
+
+.single-course-images {
+    border-radius: 20px;
+}
+
+.single-course-images img {
+    object-fit: cover;
+    min-height: 200px;
+    height: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.course-info-p {
+    position: relative;
+    bottom: 150px;
+    font-size: 18pt;
+    color: white;
+    margin:10px;
+}
+
+.single-course-details {
+    display: flex;
+    gap: 40px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 15px;
+    width: 70%;
+    margin-left: 15px;
+}
+
+.single-course-desc {
+    width: 70%;
+    border-bottom: 1px solid lightgray;
+    margin-left: 15px;
+}
+
+.reviews-div {
+    margin-left: 15px;
+}
+
+strong {
+    font-size: 14pt;
+}
+
+a {
+    color: darkgreen;
+    font-size: 14pt;
+}
+
+p {
+    font-size: 14pt;
+}

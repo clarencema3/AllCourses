@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AllCourses from "./components/AllCourses"
+import SingleCourse from "./components/SingleCourse";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <AllCourses />
+          </Route>
+          <Route path='/courses/:courseId'>
+            <SingleCourse />
           </Route>
           <Route path="/login" >
             <LoginFormPage />

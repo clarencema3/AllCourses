@@ -78,7 +78,16 @@ img {
     position: absolute;
     bottom: 5px;
     left: 5px;
-    padding: 3px 8px;
+    padding: 4px 8px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .course-container .course-p-2 {
+    position: absolute;
+    bottom: 0.1px;
+    left: 5px;
+    padding: 0px 8px;
     color: white;
     font-weight: bold;
   }
