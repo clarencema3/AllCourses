@@ -13,6 +13,7 @@ def get_all_courses():
     for course in courses:
         courseDictionary = course.to_dict()
         courseDictionary['photos'] = [photo.to_dict() for photo in course.photos]
+        courseDictionary['reviews'] = [review.to_dict() for review in course.reviews]
         course_arr.append(courseDictionary)
     return course_arr
 
@@ -23,4 +24,5 @@ def get_single_course(id):
     courseDictionary = course.to_dict()
     courseDictionary['user'] = course.user.to_dict()
     courseDictionary['reviews'] = [review.to_dict() for review in course.reviews]
+    courseDictionary['photos'] = [photo.to_dict() for photo in course.photos]
     return courseDictionary
