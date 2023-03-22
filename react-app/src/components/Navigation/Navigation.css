@@ -5,3 +5,136 @@
 .hidden {
   display: none;
 }
+
+.white-space {
+  margin: 0 2%;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  align-items: center;
+  margin-top: 1%;
+}
+
+.nav-home {
+  display: flex;
+}
+
+.userButtons {
+  text-decoration: none;
+  color: black;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.home-button {
+  text-decoration: none;
+  color: darkgreen;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.user-btn-div {
+  position: relative;
+  left: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+}
+
+.nav-profile-button {
+  border: 1px solid lightgray;
+  border-radius: 45%;
+  background-color: white;
+  align-items: center;
+  padding: 10px 10px;
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+
+
+/* profile button css */
+
+.profile-dropdown-container {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  height: 70px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 1px;
+  position: relative;
+  right: 65px;
+}
+
+
+
+.profile-dropdown-user {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 100px;
+  padding: 2px 0px;
+  border-radius: 5px;
+  cursor: not-allowed;
+}
+
+.profile-dropdown-user:hover {
+  background-color: lightgray;
+}
+
+
+
+.fa-clipboard-list {
+  height: 33px;
+  width: 20px;
+  padding: 4px 4px;
+}
+
+.profile-dropdown-logout {
+  width: 100px;
+  height: 33px;
+  padding-top: 5px;
+  border-radius: 5px;
+}
+
+.profile-dropdown-logout:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.fa-sign-out-alt {
+  height: 20px;
+  width: 20px;
+  padding: 0px 4px;
+}
+
+.profile-logsign-div {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  /* by default buttons were xparent, so added background white */
+  background: white;
+  position: relative;
+  right: 25px;
+}
+
+.login-sign-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 8px 8px;
+  cursor: pointer;
+}
+
+.login-sign-btn:hover {
+  background-color: lightgray;
+}
+

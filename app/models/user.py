@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_picture = db.Column(db.String(1000))
+    
 
     reviews = db.relationship("Review", back_populates="user", cascade="all, delete-orphan")
     favorites = db.relationship("Favorite", back_populates="user", cascade="all, delete-orphan")
@@ -37,6 +37,5 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'email': self.email,
-            'profile_picture': self.profile_picture
+            'email': self.email
         }
