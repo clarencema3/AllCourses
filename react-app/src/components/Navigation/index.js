@@ -6,18 +6,33 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	console.log('session user form use selector', sessionUser)
+
+	let userLinks
+	if (sessionUser) {
+		userLinks = (
+			<div className='user-btn-div'>
+				<NavLink to="/courses/new" className='userButtons'>Add Course</NavLink>
+				<NavLink to="/courses/favorites" className='userButtons'>Favorites</NavLink>
+				<NavLink to="/courses/completed" className='userButtons'>Completed</NavLink>
+			</div>
+		)
+	}
 
 	return (
-		<ul>
-			<li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
-			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
-			)}
-		</ul>
+		<div className='nav-container white-space'>
+			<div className='nav-home'>
+				<NavLink exact to="/" className='home-button'>AllCourses</NavLink>
+				{userLinks}
+			</div>
+			<div className='right-nav-buttons'>
+				{isLoaded && (
+					<div className='nav-buttons-profile'>
+						<ProfileButton user={sessionUser} />
+					</div>
+				)}
+			</div>
+		</div>
 	);
 }
 

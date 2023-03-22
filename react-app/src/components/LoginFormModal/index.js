@@ -21,36 +21,61 @@ function LoginFormModal() {
     }
   };
 
+  const handleDemoClick = async () => {
+    setPassword("password")
+    setEmail("demo@aa.io")
+    await dispatch(login("demo@aa.io", "password"))
+    closeModal()
+  }
+
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-    </>
+    <div className="login-form-container">
+      <div className="login-form-div">
+        <p className="login-form-header">Welcome back.</p>
+        <p className="login-form-header">Log in and start exploring.</p>
+        <form onSubmit={handleSubmit} className="login-form-form">
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="login-form-section-div">
+            <label>
+              <div>
+                Email Address
+              </div>
+              <input
+                type="text"
+                value={email}
+                className="login-form-input"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="login-form-section-div">
+            <label>
+              <div>
+                Password
+              </div>
+              <input
+                type="password"
+                value={password}
+                className="login-form-input"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="login-form-section-div">
+            <button className="login-form-buttons-login" type="submit">Log In</button>
+          </div>
+          <div className="login-form-section-div">
+            <button className="login-form-buttons-demo" onClick={() => handleDemoClick()}>Demo User</button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 
