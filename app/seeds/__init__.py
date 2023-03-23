@@ -4,7 +4,7 @@ from .courses import seed_courses, undo_courses
 from .reviews import seed_reviews, undo_reviews
 from .completed import seed_completed_course, undo_complete_course
 from .favorites import seed_favorites, undo_favorites
-from .photos import seed_photos, undo_photos
+
 
 from app.models.db import db, environment, SCHEMA
 
@@ -23,14 +23,12 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_complete_course()
         undo_favorites()
-        undo_photos()
         undo_reviews()
         undo_courses()
         undo_users()
     seed_users()
     seed_courses()
     seed_reviews()
-    seed_photos()
     seed_favorites()
     seed_completed_course()
     # Add other seed functions here
@@ -41,7 +39,6 @@ def seed():
 def undo():
     undo_complete_course()
     undo_favorites()
-    undo_photos()
     undo_reviews()
     undo_courses()
     undo_users()

@@ -44,7 +44,7 @@ const ShowAllCourses = () => {
             <div className='course-container white-space'>
                 {coursesArr?.map(course => (
                     <NavLink to={`/courses/${course.id}`} className='courseCard' key={course.id}>
-                        <img src={course?.photos[2].url} alt='course' />
+                        <img src={course?.photos.url} alt='course' />
                         <p className='course-p'>{course.name}</p>
                         <strong className='course-p-2'>{course.city}, {course.state}</strong>
                     </NavLink>

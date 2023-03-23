@@ -20,10 +20,10 @@ class Course(db.Model):
     state = db.Column(db.String(100), nullable=False)
     country = db.Column(db.String(100), nullable=False)
     course_url = db.Column(db.String(1000), nullable=False)
+    photo = db.Column(db.String(1000), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     user = db.relationship('User', back_populates='courses')
-    photos = db.relationship("Photo", back_populates="course", cascade="all, delete-orphan")
     reviews = db.relationship("Review", back_populates="course", cascade="all, delete-orphan")
     favorites = db.relationship("Favorite", back_populates="course", cascade="all, delete-orphan")
 

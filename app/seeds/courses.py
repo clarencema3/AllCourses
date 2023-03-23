@@ -16,6 +16,7 @@ def seed_courses():
         state='California',
         country='United States of America',
         course_url='https://tpc.com/hardingpark/course-overview/',
+        photo='https://i.imgur.com/QxTSCwf.jpg',
         user_id=1
     )
     course2 = Course(
@@ -29,6 +30,7 @@ def seed_courses():
         city='San Francisco',
         state='California',
         country='United States of America',
+        photo='https://i.imgur.com/XHHInbx.png',
         course_url='https://tpc.com/hardingpark/fleming-course/',
         user_id=1
     )
@@ -43,6 +45,7 @@ def seed_courses():
         city='Berkeley',
         state='California',
         country='United States of America',
+        photo='https://i.imgur.com/GFkbxm7.png',
         course_url='https://www.tildenparkgc.com/',
         user_id=2
     )
@@ -57,6 +60,7 @@ def seed_courses():
         city='Pacifica',
         state='California',
         country='United States of America',
+        photo='https://i.imgur.com/QXyahhJ.png',
         course_url='https://sfrecpark.org/Facilities/Facility/Details/Sharp-Park-Golf-Course-42',
         user_id=2
     )
@@ -71,6 +75,7 @@ def seed_courses():
         city='Pebble Beach',
         state='California',
         country='United States of America',
+        photo='https://i.imgur.com/2zsuosZ.png',
         course_url='https://www.pebblebeach.com/golf/pebble-beach-golf-links/',
         user_id=3
     )
@@ -85,6 +90,7 @@ def seed_courses():
         city='San Francisco',
         state='California',
         country='United States of America',
+        photo='https://i.imgur.com/nIt22wi.png',
         course_url='http://www.lincolnparkgolfcourse.com/',
         user_id=3
     )
