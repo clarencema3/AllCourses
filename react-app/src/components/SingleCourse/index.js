@@ -15,7 +15,7 @@ const SingleCourse = () => {
         return () => dispatch(clearState())
     }, [dispatch, courseId])
 
-    if (!course || !course.photos || !course.reviews) return <h1>loading...</h1>
+    if (!course || !course.reviews) return <h1>loading...</h1>
 
     let avgStars = 0
     const avgRating = () => {
@@ -29,7 +29,7 @@ const SingleCourse = () => {
         <div className='single-page-div'>
             <div className='single-course-info'>
                 <div className='single-course-images'>
-                    <img src={course?.photos.url}/>
+                    <img src={course?.photo}/>
                     <div className='img-overlay'>
                         <p className='course-info-p'>{course.name}</p>
                         {course.reviews.length ? 
