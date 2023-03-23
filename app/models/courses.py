@@ -40,5 +40,6 @@ class Course(db.Model):
             'city': self.city,
             'state': self.state,
             'country': self.country,
+            'photo': self.photo,
             'course_url': self.course_url
         }
