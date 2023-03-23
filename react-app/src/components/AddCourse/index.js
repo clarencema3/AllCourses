@@ -10,7 +10,7 @@ const AddCourse = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [type, setType] = useState('');
+    const [type, setType] = useState(0);
     const [lat, setLat] = useState('');
     const [lng, setLng] = useState('');
     const [address, setAddress] = useState('');
@@ -21,11 +21,48 @@ const AddCourse = () => {
     const [photo, setPhoto] = useState('');
     const [errors, setErrors] = useState([]);
 
+    const user = useSelector(state => state.session.user)
+
+    if (!user) {
+        history.push('/')
+    }
+
+    const userId = user?.id
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const newCourse = {
+            'name':name,
+            'description': description,
+            'price': +price,
+            'type': +type,
+            'latitude': +lat || +0,
+            'longitude': +lng || +0,
+            'address': address,
+            'city': city,
+            'state': state,
+            'country': country,
+            'course_url': course_url,
+            'photo': photo,
+            'user_id': +userId
+        }
+        const data = await dispatch(addNewCourse(newCourse))
+        if (data) {
+            setErrors(data)
+        } else {
+            history.push('/')
+        }
+    }
     
     return (
         <div>
             <h1>Add a Course</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
+                <ul>
+                    {errors && errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
                 <div className="form-section-div">
                     <div>
                         <div>
@@ -43,7 +80,7 @@ const AddCourse = () => {
                         <div>
                             Price
                         </div>
-                        <input type="text" value={price} className="form-input" onChange={(e) => setPrice(e.target.value)} required/>
+                        <input type="number" value={price} className="form-input" onChange={(e) => setPrice(e.target.value)} required/>
                     </div>
                     <div>
                         <div>
@@ -51,21 +88,21 @@ const AddCourse = () => {
                         </div>
                         <select onChange={(e) => setType(e.target.value)}>
                             <option disabled selected hidden>Select Type</option>
-                            <option value={9}>9 Hole</option>
-                            <option value={18}>18 Hole</option>
+                            <option value={+9}>9 Hole</option>
+                            <option value={+18}>18 Hole</option>
                         </select>
                     </div>
                     <div>
                         <div>
                             Latitude
                         </div>
-                        <input type="text" value={lat} className="form-input" onChange={(e) => setLat(e.target.value)}/>
+                        <input type="number" value={lat} className="form-input" onChange={(e) => setLat(e.target.value)}/>
                     </div>
                     <div>
                         <div>
                             Longitude
                         </div>
-                        <input type="text" value={lng} className="form-input" onChange={(e) => setLng(e.target.value)} required />
+                        <input type="number" value={lng} className="form-input" onChange={(e) => setLng(e.target.value)} />
                     </div>
                     <div>
                         <div>
@@ -95,7 +132,13 @@ const AddCourse = () => {
                         <div>
                             Course Website
                         </div>
-                        <input type="text" value={course_url} className="form-input" onChange={(e) => setCourse_url(e.target.value)} required/>
+                        <input type="url" value={course_url} className="form-input" onChange={(e) => setCourse_url(e.target.value)} required/>
+                    </div>
+                    <div>
+                        <div>
+                            Photo of course
+                        </div>
+                        <input type="url" value={photo} className="form-input" onChange={(e) => setPhoto(e.target.value)} required/>
                     </div>
                     <div className="sign-form-section-div sign-button-div">
 						<button className="sign-form-button" type="submit">Add your course</button>
