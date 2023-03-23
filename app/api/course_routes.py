@@ -12,7 +12,6 @@ def get_all_courses():
     course_arr = []
     for course in courses:
         courseDictionary = course.to_dict()
-        courseDictionary['photos'] = [photo.to_dict() for photo in course.photos]
         courseDictionary['reviews'] = [review.to_dict() for review in course.reviews]
         course_arr.append(courseDictionary)
     return course_arr
@@ -24,5 +23,31 @@ def get_single_course(id):
     courseDictionary = course.to_dict()
     courseDictionary['user'] = course.user.to_dict()
     courseDictionary['reviews'] = [review.to_dict() for review in course.reviews]
-    courseDictionary['photos'] = [photo.to_dict() for photo in course.photos]
     return courseDictionary
+
+
+@course_routes.route('/', methods=["POST"])
+def add_new_course():
+    res = request.get_json()
+
+    form = CourseForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        course = Course(
+            name=res["name"],
+            description=res["description"],
+            price=res["price"],
+            type=res["type"],
+            latitude=res["latitude"],
+            longitude=res["longitude"],
+            address=res["address"],
+            city=res["city"],
+            state=res["state"],
+            country=res["country"],
+            course_url=res["course_url"],
+            photo=res['photo'],
+            user_id=res["user_id"]
+        )
+        db.session.add(course)
+        db.session.commit()
+        return course.to_dict()

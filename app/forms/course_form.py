@@ -14,6 +14,7 @@ class CourseForm(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
     country = StringField('Country', validators=[DataRequired()])
+    photo = URLField('Photo', validators=[DataRequired(), URL()])
     course_url = URLField('Course Website', validators=[DataRequired(), URL()])
 
 

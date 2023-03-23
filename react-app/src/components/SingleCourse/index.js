@@ -9,7 +9,6 @@ const SingleCourse = () => {
     const dispatch = useDispatch()
     const { courseId } = useParams()
     const course = useSelector(state => state.courses.course)
-    console.log('course from use selector', course)
 
     useEffect(() => {
         dispatch(fetchSingleCourse(courseId))
@@ -30,7 +29,7 @@ const SingleCourse = () => {
         <div className='single-page-div'>
             <div className='single-course-info'>
                 <div className='single-course-images'>
-                    <img src={course?.photos[0]?.url}/>
+                    <img src={course?.photos.url}/>
                     <div className='img-overlay'>
                         <p className='course-info-p'>{course.name}</p>
                         {course.reviews.length ? 
