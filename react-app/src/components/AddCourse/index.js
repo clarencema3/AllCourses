@@ -74,7 +74,7 @@ const AddCourse = () => {
                         <div>
                             Description
                         </div>
-                        <textarea className='form-input' rows={15} type="text" value={description} className="form-input" onChange={(e) => setDescription(e.target.value)} required/>
+                        <textarea minlength={5} className='form-input' rows={15} type="text" value={description} className="form-input" onChange={(e) => setDescription(e.target.value)} required/>
                     </div>
                     <div className="form-section">
                         <div>

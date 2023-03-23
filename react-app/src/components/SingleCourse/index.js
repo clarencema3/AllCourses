@@ -48,7 +48,7 @@ const SingleCourse = () => {
                         <p>Type:</p>
                         <strong>{course.type} Holes</strong>
                     </div>
-                    <div>
+                    <div className='url-div'>
                         <p>Course Website:</p>
                         <a href={course.course_url}>{course.course_url}</a>
                     </div>

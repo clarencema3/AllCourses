@@ -3,6 +3,8 @@ export const GET_ALL_COURSES = "courses/all"
 export const CLEAR_STATE = "courses/clear"
 export const GET_SINGLE_COURSE = 'course'
 export const ADD_COURSE = 'course/add'
+export const DELETE_COURSE = 'course/delete'
+export const EDIT_COURSE = 'course/edit'
 
 //action creators
 export const clearState = () => {
@@ -28,6 +30,20 @@ export const getSingleCourse = (course) => {
 export const addCourse = (course) => {
     return {
         type: ADD_COURSE,
+        course
+    }
+}
+
+export const removeCourse = (courseId) => {
+    return {
+        type: DELETE_COURSE,
+        courseId
+    }
+}
+
+export const editCourse = (course) => {
+    return {
+        type: EDIT_COURSE,
         course
     }
 }
@@ -76,6 +92,31 @@ export const addNewCourse = (course) => async (dispatch) => {
 	}
 }
 
+export const deleteCourse = (courseId) => async (dispatch) => {
+    const response = await fetch(`/api/courses/${courseId}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        dispatch(removeCourse(courseId))
+    }
+}
+
+export const updateCourse = (course) => async (dispatch) => {
+    const response = await fetch(`/api/courses/${course.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(course)
+    })
+
+    if (response.ok) {
+        const course = await response.json()
+        dispatch(editCourse(course))
+    }
+} 
+
 const initialState = {};
 
 //reducer
@@ -84,6 +125,12 @@ const courseReducer = (state = initialState, action) => {
     switch (action.type) {
         case CLEAR_STATE:
             newState.course = {}
+            return newState
+        case EDIT_COURSE:
+            newState.course[action.course.id] = action.course
+            return newState
+        case DELETE_COURSE:
+            delete newState[action.courseId]
             return newState
         case ADD_COURSE:
             newState['course'] = action.course

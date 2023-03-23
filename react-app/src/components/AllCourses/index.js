@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { fetchCourses } from '../../store/courses'
+
 import './AllCourses.css'
 
 const ShowAllCourses = () => {
     const dispatch = useDispatch();
     const courses = useSelector(state => state.courses.courses)
     const user = useSelector(state => state.session.user)
-    console.log('user from use select', user)
+    
     useEffect(() => {
         dispatch(fetchCourses())
     }, [dispatch])
@@ -17,7 +18,7 @@ const ShowAllCourses = () => {
         return <div>Loading...</div>
     }
     const coursesArr = Object.values(courses)
-    console.log('array of courses', coursesArr)
+    
     const userLoggedIn = () => {
         if (user) {
             return (
@@ -48,6 +49,7 @@ const ShowAllCourses = () => {
                         <p className='course-p'>{course.name}</p>
                         <strong className='course-p-2'>{course.city}, {course.state}</strong>
                     </NavLink>
+                    
                 ))}
             </div>
         </div>

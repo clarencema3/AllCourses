@@ -14,6 +14,7 @@ function Navigation({ isLoaded }){
 				<NavLink to="/courses/new" className='userButtons'>Add Course</NavLink>
 				<NavLink to="/courses/favorites" className='userButtons'>Favorites</NavLink>
 				<NavLink to="/courses/completed" className='userButtons'>Completed</NavLink>
+				<NavLink to="/courses/current" className='userButtons'>My Courses</NavLink>
 			</div>
 		)
 	}
