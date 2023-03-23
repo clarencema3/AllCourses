@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import AllCourses from "./components/AllCourses"
 import SingleCourse from "./components/SingleCourse";
 import AddCourse from "./components/AddCourse";
+import UserCourses from "./components/UserCourses";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <AllCourses />
+          </Route>
+          <Route path='/courses/current'>
+            <UserCourses />
           </Route>
           <Route path='/courses/new'>
             <AddCourse />

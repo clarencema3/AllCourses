@@ -23,6 +23,7 @@ def get_all_courses():
     course_arr = []
     for course in courses:
         courseDictionary = course.to_dict()
+        courseDictionary['user'] = course.user.to_dict()
         courseDictionary['reviews'] = [review.to_dict() for review in course.reviews]
         course_arr.append(courseDictionary)
     return course_arr
@@ -40,7 +41,6 @@ def get_single_course(id):
 @course_routes.route('/', methods=["POST"])
 def add_new_course():
     res = request.get_json()
-    print('res in backend \n\n\n\n\n', res)
     form = CourseForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
@@ -61,6 +61,37 @@ def add_new_course():
         )
         db.session.add(course)
         db.session.commit()
-        print('course dict \n\n\n\n\n', course.to_dict())
         return course.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@course_routes.route('/<int:id>', methods=["DELETE"])
+def delete_a_course(id):
+    course = Course.query.get(id)
+
+    if course:
+        db.session.delete(course)
+        db.session.commit()
+        return {"Response": f"Successfully deleted course."}
+
+
+@course_routes.route('/<int:id>', methods=["PUT"])
+def edit_a_course(id):
+    course = Course.query.get(id)
+    res = request.get_json()
+    if course:
+        course.name=res["name"]
+        course.description=res["description"]
+        course.price=res["price"]
+        course.type=res["type"]
+        course.latitude=res["latitude"]
+        course.longitude=res["longitude"]
+        course.address=res["address"]
+        course.city=res["city"]
+        course.state=res["state"]
+        course.country=res["country"]
+        course.course_url=res["course_url"]
+        course.photo=res['photo']
+        db.session.commit()
+        return course.to_dict()
+        

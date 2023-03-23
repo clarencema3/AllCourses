@@ -57,6 +57,12 @@
     margin-left: 15px;
 }
 
+.url-div {
+    width: 80%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
 strong {
     font-size: 14pt;
 }
