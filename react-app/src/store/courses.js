@@ -130,7 +130,9 @@ const courseReducer = (state = initialState, action) => {
             newState.course[action.course.id] = action.course
             return newState
         case DELETE_COURSE:
-            delete newState[action.courseId]
+            newState.course = {...state.course}
+            newState.courses = { ...state.courses }
+            delete newState.courses[action.courseId]
             return newState
         case ADD_COURSE:
             newState['course'] = action.course
