@@ -4,6 +4,7 @@ import { useHistory, NavLink } from 'react-router-dom'
 import { fetchCourses } from '../../store/courses'
 import './UserCourses.css'
 import OpenModalButton from "../OpenModalButton";
+import DeleteCourseModal from './DeleteCourseModal';
 
 
 const UserCourses = () => {
@@ -27,31 +28,39 @@ const UserCourses = () => {
     const userCourses = coursesArr.filter(course => course.user.id === userId)
 
     return (
-        <div className='user-course-container'>
-            {userCourses?.map(course => (
-                <div className='user-card-div'>
-                    <NavLink to={`/courses/${course.id}`}  key={course.id}>
-                        <div className='user-course-card'>
-                            <img src={course.photo} alt='course' />
-                        </div>
-                    </NavLink>
-                    <div className='user-course-info'>
-                        <div>
-                            <p className='user-course-name'>{course.name}</p>
-                        </div>
-                        <div className='user-course-btns'>
-                            <OpenModalButton
-                            modalClass='edit-delete-user-course'
-                            buttonText='edit'
-                            />
-                            <OpenModalButton 
-                            modalClass='edit-delete-user-course'
-                            buttonText='delete'
-                            />
+        <div >
+            <div className='home-img-div'>
+                <img src='https://i.imgur.com/Ntrd4Ct.jpg'></img>
+            </div>
+            <div className='user-course-container'>
+                {userCourses?.map(course => (
+                    <div className='user-card-div'>
+                        <NavLink to={`/courses/${course.id}`}  key={course.id}>
+                            <div className='user-course-card'>
+                                <img src={course.photo} alt='course' />
+                            </div>
+                        </NavLink>
+                        <div className='user-course-info'>
+                            <div>
+                                <p className='user-course-name'>{course.name}</p>
+                            </div>
+                            <div className='user-course-btns'>
+                                <OpenModalButton
+                                modalClass='edit-delete-user-course'
+                                buttonText='edit'
+                                />
+                                <OpenModalButton 
+                                modalClass='edit-delete-user-course'
+                                buttonText='delete'
+                                modalComponent={
+                                    <DeleteCourseModal id={course.id} />
+                                }
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }

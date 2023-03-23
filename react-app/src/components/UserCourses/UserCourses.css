@@ -56,3 +56,37 @@
     border-radius: 15px;
     box-shadow: 1px 1px 1px 1px lightgray;
 }
+
+.home-img-div {
+    max-height: 350px;
+}
+
+.home-img-div img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 350px;
+}
+
+/* css for delete course */
+
+.delete-course-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-button {
+    width: 50%;
+    background-color: darkgreen;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px 2px lightgray;
+    font-size: 14pt;
+}
+
+
+
+
+
