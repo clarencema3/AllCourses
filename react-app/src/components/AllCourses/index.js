@@ -39,7 +39,7 @@ const ShowAllCourses = () => {
     return (
         <div className='home-container'>
             <div className='home-img-div'>
-                <img src='https://i.imgur.com/CvE3Xl9.jpg'></img>
+                <img src='https://i.imgur.com/CvE3Xl9.jpg' alt='golf course'></img>
                 {userLoggedIn()}
             </div>
             <div className='course-container white-space'>

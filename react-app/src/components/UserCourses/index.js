@@ -5,6 +5,7 @@ import { fetchCourses } from '../../store/courses'
 import './UserCourses.css'
 import OpenModalButton from "../OpenModalButton";
 import DeleteCourseModal from './DeleteCourseModal';
+import EditCourseModal from './EditCourseModal';
 
 
 const UserCourses = () => {
@@ -23,14 +24,14 @@ const UserCourses = () => {
         history.push('/')
     }
     
-    const userId = user.id;
+    const userId = user?.id;
     const coursesArr = Object.values(courses)
-    const userCourses = coursesArr.filter(course => course.user.id === userId)
+    const userCourses = coursesArr.filter(course => course?.user?.id === userId)
 
     return (
-        <div >
+        <div>
             <div className='home-img-div'>
-                <img src='https://i.imgur.com/Ntrd4Ct.jpg'></img>
+                <img src='https://i.imgur.com/Ntrd4Ct.jpg' alt='golf course'></img>
             </div>
             <div className='user-course-container'>
                 {userCourses?.map(course => (
@@ -48,6 +49,9 @@ const UserCourses = () => {
                                 <OpenModalButton
                                 modalClass='edit-delete-user-course'
                                 buttonText='edit'
+                                modalComponent={
+                                    <EditCourseModal course={course} />
+                                }
                                 />
                                 <OpenModalButton 
                                 modalClass='edit-delete-user-course'
