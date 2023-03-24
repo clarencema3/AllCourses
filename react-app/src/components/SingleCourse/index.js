@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { clearState, fetchSingleCourse } from '../../store/courses';
@@ -29,7 +29,7 @@ const SingleCourse = () => {
         <div className='single-page-div'>
             <div className='single-course-info'>
                 <div className='single-course-images'>
-                    <img src={course?.photo}/>
+                    <img src={course?.photo} alt='golf course'/>
                     <div className='img-overlay'>
                         <p className='course-info-p'>{course.name}</p>
                         {course.reviews.length ? 
