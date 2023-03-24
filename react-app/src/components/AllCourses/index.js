@@ -39,13 +39,13 @@ const ShowAllCourses = () => {
     return (
         <div className='home-container'>
             <div className='home-img-div'>
-                <img src='https://i.imgur.com/CvE3Xl9.jpg' alt='golf course'></img>
+                <img src='https://i.imgur.com/CvE3Xl9.jpg' alt='golf course'/>
                 {userLoggedIn()}
             </div>
             <div className='course-container white-space'>
                 {coursesArr?.map(course => (
                     <NavLink to={`/courses/${course.id}`} className='courseCard' key={course.id}>
-                        <img src={course.photo} alt='course' />
+                        <img src={course.photo} alt='course' onError={e => { e.currentTarget.src = "https://i.imgur.com/A02fsZ2.png" }}/>
                         <p className='course-p'>{course.name}</p>
                         <strong className='course-p-2'>{course.city}, {course.state}</strong>
                     </NavLink>

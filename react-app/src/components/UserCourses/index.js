@@ -35,13 +35,13 @@ const UserCourses = () => {
             </div>
             <div className='user-course-container'>
                 {userCourses?.map(course => (
-                    <div className='user-card-div'>
-                        <NavLink to={`/courses/${course.id}`}  key={course.id}>
+                    <div className='user-card-div' key={course.id}>
+                        <NavLink to={`/courses/${course.id}`}>
                             <div className='user-course-card'>
-                                <img src={course.photo} alt='course' />
+                                <img src={course.photo} alt='course' onError={e => { e.currentTarget.src = "https://i.imgur.com/A02fsZ2.png" }}/>
                             </div>
                         </NavLink>
-                        <div className='user-course-info'>
+                        <div className='user-course-info' >
                             <div>
                                 <p className='user-course-name'>{course.name}</p>
                             </div>
