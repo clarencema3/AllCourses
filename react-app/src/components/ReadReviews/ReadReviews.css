@@ -1,0 +1,41 @@
+.reviews-summary {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 20px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+}
+
+.rev-star {
+    color: #56c056;
+}
+
+th {
+    color: #56c056;
+}
+
+
+.post-review {
+    display: flex;
+    align-items: center;
+}
+
+.post-review-btn {
+    font-size: 14pt;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: darkgreen;
+    color: white;
+}
+
+.user-reviews-div {
+    width: 70%;
+}
+
+.user-review {
+    width: 70%;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+}
+
