@@ -2,12 +2,12 @@ import React from 'react';
 import './ReadReviews.css'
 import OpenModalButton from '../OpenModalButton';
 import { useSelector } from 'react-redux';
+import CreateReviewModal from '../CreateReviewModal';
+
 
 const ReadReviews = ({ course }) => {
     const reviewsArr = course.reviews;
     const user = useSelector(state => state.session.user)
-    if (!user) return null
-    console.log(reviewsArr)
 
     const graphBar1 = () => {
         let firstBar = 0
@@ -82,11 +82,11 @@ const ReadReviews = ({ course }) => {
     }
 
     const writeReview = () => {
-        const reviewedUser = reviewsArr.find(review => review.user_id === user.id)
-        
-        if (user.id === course.user.id) {
+        const reviewedUser = reviewsArr.find(review => review.user_id === user?.id)
+        if (!user) return ''
+        if (user?.id === course.user.id) {
             return ''
-        } else if (user.id === reviewedUser?.user_id) {
+        } else if (user?.id === reviewedUser?.user_id) {
             return ''
         } else {
             return (
@@ -94,7 +94,9 @@ const ReadReviews = ({ course }) => {
                     <OpenModalButton 
                     modalClass='post-review-btn'
                     buttonText='Write review'
-    
+                    modalComponent={
+                        <CreateReviewModal course={course} user={user}/>
+                    }
                     />
                 </div>
             )
@@ -140,6 +142,7 @@ const ReadReviews = ({ course }) => {
             <div className='user-review-div'>
                 {reviewsArr.map(review => (
                     <div>
+                        <p>{review.reviewer_first_name} {review.reviewer_last_name}</p>
                         <p className='num-stars'>{review.rating}<i className="fas fa-star rev-star" /> · {review.timestamp.slice(5, 16)}</p>
                         <p className='user-review'>{review.review}</p>
                     </div>

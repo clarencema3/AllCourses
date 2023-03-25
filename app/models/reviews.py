@@ -24,6 +24,8 @@ class Review(db.Model):
             'user_id': self.user_id,
             'rating': self.rating,
             'review': self.review,
-            'timestamp': self.timestamp
+            'timestamp': self.timestamp,
+            'reviewer_first_name': self.user.first_name,
+            'reviewer_last_name': self.user.last_name
         }
     
