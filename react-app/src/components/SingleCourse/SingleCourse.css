@@ -40,7 +40,7 @@
 
 .single-course-details {
     display: flex;
-    gap: 40px;
+    gap: 50px;
     border-bottom: 1px solid lightgray;
     padding-bottom: 15px;
     width: 70%;
@@ -53,12 +53,16 @@
     margin-left: 15px;
 }
 
+.type-div {
+    width: 15%;
+}
+
 .reviews-div {
     margin-left: 15px;
 }
 
 .url-div {
-    width: 80%;
+    width: 70%;
     box-sizing: border-box;
     overflow: hidden;
 }
