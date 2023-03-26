@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useModal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { postReview } from '../../store/reviews';
+import { fetchSingleCourse } from '../../store/courses';
 
 
 const CreateReviewModal = ({ course, user }) => {
@@ -12,15 +13,13 @@ const CreateReviewModal = ({ course, user }) => {
     const [errors, setErrors] = useState([]);
     const [submitted, setSubmitted] = useState(false)
 
-    console.log('course', course)
-    console.log('user', user)
-
     useEffect(() => {
         const errors = [];
         if (review.length < 1) errors.push('Review is required')
         if (rating < 1) errors.push('Star rating is required')
         setErrors(errors);
       }, [rating, review])
+
 
     const handleClick = (value) => {
         setRating(value)
@@ -39,6 +38,7 @@ const CreateReviewModal = ({ course, user }) => {
         if (data) {
             setErrors(data)
         } else {
+            dispatch(fetchSingleCourse(course.id))
             closeModal()
         }
     }

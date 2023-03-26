@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Review
+from app.models import Review, db
 from app.forms import ReviewForm
 
 reviews_routes = Blueprint('reviews', __name__)
@@ -27,7 +27,6 @@ def create_new_review():
             review = res["review"],
             course_id = res["course_id"],
             user_id = res["user_id"],
-            timestamp = res["timestamp"]
         )
         db.session.add(review)
         db.session.commit()

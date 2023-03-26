@@ -40,8 +40,11 @@ const reviewsReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch (action.type) {
         case MAKE_REVIEW:
+            console.log('newState', newState)
+            console.log('action', action)
             newState.reviews = { ...state.reviews } 
             newState.reviews['review'] = action.review
+            return newState
         default:
             return state
     }
