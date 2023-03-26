@@ -1,5 +1,5 @@
 .reviews-summary {
-    width: 70%;
+    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 20px;
@@ -29,13 +29,10 @@ th {
     color: white;
 }
 
-.user-reviews-div {
-    width: 70%;
-    
-}
+
 
 .user-review {
-    width: 70%;
+   
     border-bottom: 1px solid lightgray;
     padding-bottom: 10px;
 }
