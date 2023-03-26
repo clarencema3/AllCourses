@@ -43,12 +43,11 @@
     gap: 50px;
     border-bottom: 1px solid lightgray;
     padding-bottom: 15px;
-    width: 70%;
+    height: 200px;
     margin-left: 15px;
 }
 
 .single-course-desc {
-    width: 70%;
     border-bottom: 1px solid lightgray;
     margin-left: 15px;
 }
@@ -62,9 +61,10 @@
 }
 
 .url-div {
-    width: 70%;
+    width: 50%;
     box-sizing: border-box;
-    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }
 
 strong {
