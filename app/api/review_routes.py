@@ -11,7 +11,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 
@@ -31,4 +31,28 @@ def create_new_review():
         db.session.add(review)
         db.session.commit()
         return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@reviews_routes.route('/<int:id>', methods=["DELETE"])
+def delete_review(id):
+    review = Review.query.get(id)
+    if review: 
+        db.session.delete(review)
+        db.session.commit()
+        return {"Response": f"Successfully deleted review."}
+
+
+@reviews_routes.route('/<int:id>', methods=["PUT"])
+def edit_review(id):
+    review = Review.query.get(id)
+    res = request.get_json()
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if review:
+        if form.validate_on_submit():
+            review.rating=res["rating"]
+            review.review=res["review"]
+            db.session.commit()
+            return review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

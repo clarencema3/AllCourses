@@ -3,11 +3,14 @@ import './ReadReviews.css'
 import OpenModalButton from '../OpenModalButton';
 import { useSelector } from 'react-redux';
 import CreateReviewModal from '../CreateReviewModal';
+import DeleteReviewModal from '../DeleteReviewModal';
+import EditReviewModal from '../EditReviewModal';
 
 
 const ReadReviews = ({ course }) => {
     const reviewsArr = course.reviews;
     const user = useSelector(state => state.session.user)
+    
 
     const graphBar1 = () => {
         let firstBar = 0
@@ -81,8 +84,9 @@ const ReadReviews = ({ course }) => {
         }
     }
 
+    const reviewedUser = reviewsArr.find(review => review.user_id === user?.id)
+    
     const writeReview = () => {
-        const reviewedUser = reviewsArr.find(review => review.user_id === user?.id)
         if (!user) return ''
         if (user?.id === course.user.id) {
             return ''
@@ -140,13 +144,34 @@ const ReadReviews = ({ course }) => {
                 {writeReview()}
             </div>
             <div className='user-review-div'>
-                {reviewsArr.map(review => (
-                    <div>
-                        <p>{review.reviewer_first_name} {review.reviewer_last_name}</p>
-                        <p className='num-stars'>{review.rating}<i className="fas fa-star rev-star" /> · {review.timestamp.slice(5, 16)}</p>
-                        <p className='user-review'>{review.review}</p>
-                    </div>
-                ))}
+                <div className='review-container'>
+                    {reviewsArr.map(review => (
+                        <div key={review.id}>
+                            {review.user_id === user?.id ?
+                                <div className='edit-del-div'>
+                                    <OpenModalButton
+                                    buttonText='Edit'
+                                    modalClass='del-edit-rev-btn'
+                                    modalComponent={
+                                        <EditReviewModal review={reviewedUser} course={course} />
+                                    }
+                                    />
+                                    <OpenModalButton 
+                                    buttonText='Delete'
+                                    modalClass='del-edit-rev-btn'
+                                    modalComponent={
+                                        <DeleteReviewModal review={reviewedUser} course={course}/>
+                                    }
+                                    />
+                                </div> :
+                                null
+                            }
+                            <p className='reviewer-name'>{review.reviewer_first_name} {review.reviewer_last_name}</p>
+                            <p className='num-stars'>{review.rating}<i className="fas fa-star rev-star" /> · {review.timestamp.slice(5, 16)}</p>
+                            <p className='user-review'>{review.review}</p>
+                        </div>
+                    ))}
+                </div>
             </div>  
         </div>
     )

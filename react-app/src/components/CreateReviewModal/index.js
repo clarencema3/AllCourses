@@ -3,7 +3,7 @@ import { useModal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { postReview } from '../../store/reviews';
 import { fetchSingleCourse } from '../../store/courses';
-
+import './CreateReview.css'
 
 const CreateReviewModal = ({ course, user }) => {
     const { closeModal } = useModal();
@@ -18,7 +18,7 @@ const CreateReviewModal = ({ course, user }) => {
         if (review.length < 1) errors.push('Review is required')
         if (rating < 1) errors.push('Star rating is required')
         setErrors(errors);
-      }, [rating, review])
+    }, [rating, review])
 
 
     const handleClick = (value) => {
@@ -70,14 +70,16 @@ const CreateReviewModal = ({ course, user }) => {
                 className="review-input-text"
                 placeholder="Share your thoughts about the course so others know what to expect."
                 rows='10'
-                cols='35'
+                cols='40'
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
                 ></textarea>
             </div>
-            <button className="submit-form-btn" onClick={handleSubmit} disabled={errors.length ? true : false}>
-                Post a review
-            </button>
+            <div className='rev-btn-div'>
+                <button className="submit-rev-btn" onClick={handleSubmit}>
+                    Post
+                </button>
+            </div>
         </form>
     )
 }
