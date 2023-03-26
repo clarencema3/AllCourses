@@ -1,0 +1,18 @@
+.delete-rev-btn-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.delete-rev-btn {
+    height: 30px;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 20px;
+}
+
+.keep-rev {
+    height: 30px;
+    background-color: white;
+    border-radius: 20px;
+}

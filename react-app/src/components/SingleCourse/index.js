@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom';
 import { clearState, fetchSingleCourse } from '../../store/courses';
 import ReadReviews from '../ReadReviews';
 import './SingleCourse.css'
-
+import Map from '../Map';
 
 const SingleCourse = () => {
     const dispatch = useDispatch()
     const { courseId } = useParams()
     const course = useSelector(state => state.courses.course)
-
+    
     useEffect(() => {
         dispatch(fetchSingleCourse(courseId))
         return () => dispatch(clearState())
@@ -31,6 +31,7 @@ const SingleCourse = () => {
             <div className='single-course-info'>
                 <div className='single-course-images'>
                     <img src={course?.photo} alt='golf course' onError={e => { e.currentTarget.src = "https://i.imgur.com/z8kAmH8.png" }}/>
+                    
                     <div className='img-overlay'>
                         <p className='course-info-p'>{course.name}</p>
                         {course.reviews.length ? 
@@ -53,6 +54,7 @@ const SingleCourse = () => {
                         <p>Course Website:</p>
                         <a href={course.course_url}>{course.course_url}</a>
                     </div>
+                    <Map latitude={course.latitude} longitude={course.longitude}/>
                 </div>
                 <br/>
                 <div className='single-course-desc'>
@@ -62,6 +64,7 @@ const SingleCourse = () => {
                 <div className='reviews-div'>
                     <ReadReviews course={course}/>
                 </div>
+                
             </div>
         </div>
     )

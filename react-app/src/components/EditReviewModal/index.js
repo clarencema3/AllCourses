@@ -74,7 +74,7 @@ const EditReviewModal = ({ review, course }) => {
             </div>
             <div className='rev-btn-div'>
                 <button className="submit-rev-btn">
-                    Post
+                    Edit
                 </button>
             </div>
         </form>

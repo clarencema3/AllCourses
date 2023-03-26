@@ -3,7 +3,7 @@ import { useModal } from '../../context/Modal'
 import { useDispatch } from 'react-redux'
 import { deleteReview } from '../../store/reviews'
 import { fetchSingleCourse } from '../../store/courses'
-
+import './DeleteReview.css'
 
 const DeleteReviewModal = ({ review, course }) => {
     const { closeModal } = useModal()
@@ -22,8 +22,8 @@ const DeleteReviewModal = ({ review, course }) => {
             <h1>Delete review?</h1>
             <p>Deleting a review will erase it permanently.</p>
             <div className='delete-rev-btn-div'>
-                <button onClick={submit}>Delete</button>
-                <button onClick={closeModal}>Keep</button>
+                <button className='delete-rev-btn' onClick={submit}>Delete</button>
+                <button className='keep-rev' onClick={closeModal}>Keep</button>
             </div>
         </div>
     )
