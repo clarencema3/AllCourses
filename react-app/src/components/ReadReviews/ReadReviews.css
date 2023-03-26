@@ -31,6 +31,7 @@ th {
 
 .user-reviews-div {
     width: 70%;
+    
 }
 
 .user-review {
@@ -39,3 +40,31 @@ th {
     padding-bottom: 10px;
 }
 
+.reviewer-name {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.num-stars {
+    margin-top: 1px;
+}
+
+.edit-del-div {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    width: 70%;
+    gap: 20px;
+}
+
+.del-edit-rev-btn {
+    height: 25px;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 15px;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column-reverse;
+}

@@ -32,3 +32,23 @@ def create_new_review():
         db.session.commit()
         return review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@reviews_routes.route('/<int:id>', methods=["DELETE"])
+def delete_review(id):
+    review = Review.query.get(id)
+    if review: 
+        db.session.delete(review)
+        db.session.commit()
+        return {"Response": f"Successfully deleted review."}
+
+
+@reviews_routes.route('/<int:id>', methods=["PUT"])
+def edit_review(id):
+    review = Review.query.get(id)
+    res = request.get_json()
+    if review:
+        review.rating=res["rating"]
+        review.review=res["review"]
+        db.session.commit()
+        return review.to_dict()
