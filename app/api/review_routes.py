@@ -47,8 +47,12 @@ def delete_review(id):
 def edit_review(id):
     review = Review.query.get(id)
     res = request.get_json()
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
     if review:
-        review.rating=res["rating"]
-        review.review=res["review"]
-        db.session.commit()
-        return review.to_dict()
+        if form.validate_on_submit():
+            review.rating=res["rating"]
+            review.review=res["review"]
+            db.session.commit()
+            return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

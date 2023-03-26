@@ -73,7 +73,15 @@ export const editReview = (review) => async (dispatch) => {
       const normalizedData = {}
       normalizedData[review.id] = review
       dispatch(updateReview(normalizedData))
-    }
+      return null
+    } else if (response.status < 500) {
+        const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
   }
 
 const initialState = {}

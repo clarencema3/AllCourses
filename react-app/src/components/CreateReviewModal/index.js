@@ -18,7 +18,7 @@ const CreateReviewModal = ({ course, user }) => {
         if (review.length < 1) errors.push('Review is required')
         if (rating < 1) errors.push('Star rating is required')
         setErrors(errors);
-      }, [rating, review])
+    }, [rating, review])
 
 
     const handleClick = (value) => {

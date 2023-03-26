@@ -4,6 +4,7 @@ import OpenModalButton from '../OpenModalButton';
 import { useSelector } from 'react-redux';
 import CreateReviewModal from '../CreateReviewModal';
 import DeleteReviewModal from '../DeleteReviewModal';
+import EditReviewModal from '../EditReviewModal';
 
 
 const ReadReviews = ({ course }) => {
@@ -84,8 +85,7 @@ const ReadReviews = ({ course }) => {
     }
 
     const reviewedUser = reviewsArr.find(review => review.user_id === user?.id)
-    console.log('reviewed user',reviewedUser)
-    console.log('current user', user)
+    
     const writeReview = () => {
         if (!user) return ''
         if (user?.id === course.user.id) {
@@ -107,30 +107,7 @@ const ReadReviews = ({ course }) => {
         }
     }
 
-    const deleteAndEditBtns = () => {
-        if (user?.id === reviewedUser?.user_id) {
-            return (
-                <div className='edit-del-div'>
-                    <OpenModalButton
-                    buttonText='Edit'
-                    modalClass='del-edit-rev-btn'
-                    
-                    />
-                    <OpenModalButton 
-                    buttonText='Delete'
-                    modalClass='del-edit-rev-btn'
-                    modalComponent={
-                        <DeleteReviewModal review={reviewedUser} course={course}/>
-                    }
-                    />
-                </div>
-            )
-        } else {
-            return null
-        }
-    }
 
-    console.log(reviewsArr)
     return (
         <div className='reviews-section'>
             <div className='reviews-summary'>   
@@ -170,12 +147,14 @@ const ReadReviews = ({ course }) => {
                 <div className='review-container'>
                     {reviewsArr.map(review => (
                         <div key={review.id}>
-                            {review.user_id === user.id ?
+                            {review.user_id === user?.id ?
                                 <div className='edit-del-div'>
                                     <OpenModalButton
                                     buttonText='Edit'
                                     modalClass='del-edit-rev-btn'
-                                    
+                                    modalComponent={
+                                        <EditReviewModal review={reviewedUser} course={course} />
+                                    }
                                     />
                                     <OpenModalButton 
                                     buttonText='Delete'
