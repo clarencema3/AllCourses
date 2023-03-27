@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { fetchCourses } from '../../store/courses'
-
 import './AllCourses.css'
 
 const ShowAllCourses = () => {
