@@ -54,7 +54,9 @@ const SingleCourse = () => {
                         <p>Course Website:</p>
                         <a href={course.course_url}>{course.course_url}</a>
                     </div>
-                    <Map latitude={course.latitude} longitude={course.longitude}/>
+                    <Map 
+                    course={course}
+                    />
                 </div>
                 <br/>
                 <div className='single-course-desc'>
