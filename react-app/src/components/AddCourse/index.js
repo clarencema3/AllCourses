@@ -74,7 +74,7 @@ const AddCourse = () => {
                         <div>
                             Description
                         </div>
-                        <textarea minlength={5} className='form-input' rows={15} type="text" value={description} onChange={(e) => setDescription(e.target.value)} required/>
+                        <textarea minLength={5} className='form-input' rows={15} type="text" value={description} onChange={(e) => setDescription(e.target.value)} required/>
                     </div>
                     <div className="form-section">
                         <div>
@@ -86,8 +86,8 @@ const AddCourse = () => {
                         <div>
                             Type
                         </div>
-                        <select className='form-input' onChange={(e) => setType(e.target.value)}>
-                            <option disabled selected hidden>Select Type</option>
+                        <select className='form-input' onChange={(e) => setType(e.target.value)} defaultValue='Select Type'>
+                            <option disabled hidden>Select Type</option>
                             <option value={+9}>9 Hole</option>
                             <option value={+18}>18 Hole</option>
                         </select>
