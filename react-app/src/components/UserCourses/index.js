@@ -34,7 +34,7 @@ const UserCourses = () => {
                 <img src='https://i.imgur.com/Ntrd4Ct.jpg' alt='golf course'></img>
             </div>
             <div className='user-course-container'>
-                {userCourses?.map(course => (
+                {userCourses.length ? userCourses?.map(course => (
                     <div className='user-card-div' key={course.id}>
                         <NavLink to={`/courses/${course.id}`}>
                             <div className='user-course-card'>
@@ -63,7 +63,12 @@ const UserCourses = () => {
                             </div>
                         </div>
                     </div>
-                ))}
+                )) :
+                <div className='no-user-course-div'>
+                    <h1>Add your first course!</h1>
+                    <NavLink to="/courses/new" className='user-add-course'>Add Course</NavLink>
+                </div>
+                }
             </div>
         </div>
     )
