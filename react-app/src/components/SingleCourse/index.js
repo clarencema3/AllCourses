@@ -52,7 +52,7 @@ const SingleCourse = () => {
                     </div>
                     <div className='url-div'>
                         <p>Course Website:</p>
-                        <a href={course.course_url}>{course.course_url}</a>
+                        <a href={course.course_url} target="_blank" rel="noopener noreferrer">{course.course_url}</a>
                     </div>
                     <Map 
                     course={course}
