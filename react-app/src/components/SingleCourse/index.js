@@ -5,6 +5,7 @@ import { clearState, fetchSingleCourse } from '../../store/courses';
 import ReadReviews from '../ReadReviews';
 import './SingleCourse.css'
 import Map from '../Map';
+import OpenModalButton from '../OpenModalButton';
 
 const SingleCourse = () => {
     const dispatch = useDispatch()
@@ -25,6 +26,10 @@ const SingleCourse = () => {
         })
         return Number(avgStars / course.reviews.length).toFixed(1)
     }
+
+    //put the course into an array for the map component because favorites+completed will use multiple courses
+    const courseMapArr = []
+    courseMapArr.push(course)
 
     return (
         <div className='single-page-div'>
@@ -55,7 +60,7 @@ const SingleCourse = () => {
                         <a href={course.course_url} target="_blank" rel="noopener noreferrer">{course.course_url}</a>
                     </div>
                     <Map 
-                    course={course}
+                    courseArr={courseMapArr}
                     />
                 </div>
                 <br/>
@@ -63,6 +68,7 @@ const SingleCourse = () => {
                     <strong>Description</strong>
                     <p>{course.description}</p>
                 </div>
+                
                 <div className='reviews-div'>
                     <ReadReviews course={course}/>
                 </div>
