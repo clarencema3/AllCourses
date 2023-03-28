@@ -4,6 +4,8 @@ import { fetchFavorites } from '../../store/favorites'
 import { NavLink, useHistory } from 'react-router-dom'
 import './FavoriteCourses.css'
 import Map from '../Map';
+import OpenModalButton from '../OpenModalButton';
+import DeleteFavorite from '../DeleteFavorite'
 
 const ShowFavorites = () => {
     const history = useHistory()
@@ -25,7 +27,7 @@ const ShowFavorites = () => {
     const favoritesArr = Object.values(courses)
     //filter favorites by current user logged on
     const userFavorites = favoritesArr.filter(favorite => favorite.user_id === user.id)
-    
+    console.log(userFavorites)
     return (
         <div className='favorites-container'>
             {userFavorites.length ? 
@@ -33,11 +35,20 @@ const ShowFavorites = () => {
                     <section className='fav-course-section'>
                         <div className='course-container white-space'>
                         {userFavorites.map(course => (
-                            <NavLink to={`/courses/${course.course.id}`} className='courseCard' key={course.course.id}>
-                                <img src={course.course.photo} alt='course' onError={e => { e.currentTarget.src = "https://i.imgur.com/A02fsZ2.png" }}/>
-                                <p className='course-p'>{course.course.name}</p>
-                                <strong className='course-p-2'>{course.course.city}, {course.course.state}</strong>
-                            </NavLink>
+                            <>
+                                <NavLink to={`/courses/${course.course.id}`} className='courseCard' key={course.course.id}>
+                                    <img src={course.course.photo} alt='course' onError={e => { e.currentTarget.src = "https://i.imgur.com/A02fsZ2.png" }}/>
+                                    <p className='course-p'>{course.course.name}</p>
+                                    <strong className='course-p-2'>{course.course.city}, {course.course.state}</strong>
+                                </NavLink>
+                                <OpenModalButton 
+                                buttonText='delete'
+                                modalClass='fav-delete-btn'
+                                modalComponent={
+                                    <DeleteFavorite favoriteId={course.id}/>
+                                }
+                                />
+                            </>
                         ))}
                         </div>
                     </section>
