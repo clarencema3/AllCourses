@@ -26,6 +26,10 @@ const SingleCourse = () => {
         return Number(avgStars / course.reviews.length).toFixed(1)
     }
 
+    //put the course into an array for the map component because favorites+completed will use multiple courses
+    const courseMapArr = []
+    courseMapArr.push(course)
+
     return (
         <div className='single-page-div'>
             <div className='single-course-info'>
@@ -55,7 +59,7 @@ const SingleCourse = () => {
                         <a href={course.course_url} target="_blank" rel="noopener noreferrer">{course.course_url}</a>
                     </div>
                     <Map 
-                    course={course}
+                    courseArr={courseMapArr}
                     />
                 </div>
                 <br/>

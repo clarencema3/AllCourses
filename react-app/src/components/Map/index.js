@@ -4,25 +4,30 @@ import { getGeocode, getLatLng } from 'use-places-autocomplete';
 import { useDispatch } from 'react-redux';
 import { fetchSingleCourse, updateCourse } from '../../store/courses';
 
-const libs = ["places"]
 
-function Map({ course }) {
+
+function Map({ courseArr }) {
     const dispatch = useDispatch()
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-        libraries: libs
+       
     })
 
     if (!isLoaded) {
         return 'Loading'
     }
-
-    const existingCoords = {
-        lat: course.latitude, lng: course.longitude      
+    console.log(courseArr)
+    const oneCourseCoords = (course) => {
+        const existingCoords = {
+            lat: course.latitude, lng: course.longitude      
+        }
+        return existingCoords
+        
     }
 
     //get coordinates from address if lat & lng are both 0(default values)
-    const getCoordinates = () => {
+    const getSingleCoordinates = (course) => {
+        
         const parameter = {
             address: `${course.address}, ${course.city}, ${course.state}`
         }
@@ -38,18 +43,38 @@ function Map({ course }) {
             }
             return center
         })
+        
     }
-    
+
+   
+   
     
     return (
        <GoogleMap 
-       center={course.latitude !== 0 && course.longitude !== 0 ? existingCoords : getCoordinates()} 
-       zoom={12} 
+       center={courseArr.length === 1 ?
+            courseArr[0].latitude !== 0 && courseArr[0].longitude !== 0 ? oneCourseCoords(courseArr[0]) : getSingleCoordinates(courseArr[0])
+        : courseArr[0].course.latitude !== 0 && courseArr[0].course.longitude !== 0 ? oneCourseCoords(courseArr[0].course) : getSingleCoordinates(courseArr[0].course)
+        } 
+       zoom={courseArr.length === 1 ? 11 : 8} 
        mapContainerStyle={{width: '100%', height: '100%'}}>
-        <Marker
-        position={course.latitude !== 0 && course.longitude !== 0 ? existingCoords : getCoordinates()}
-        />
+        <div>
+            {courseArr.length === 1 ? 
+            courseArr.map(course => (
+                <Marker
+                key={course.id}
+                position={course.latitude !== 0 && course.longitude !== 0 ? oneCourseCoords(course) : getSingleCoordinates(course)}
+                />
+            )) :
+            courseArr.map(course => (
+                <Marker
+                key={course.id}
+                position={course.course.latitude !== 0 && course.course.longitude !== 0 ? oneCourseCoords(course.course) : getSingleCoordinates(course.course)}
+                />
+            ))
+        }
+        </div>
        </GoogleMap>
+    
     )
 }
 
