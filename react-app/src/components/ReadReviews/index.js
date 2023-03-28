@@ -147,7 +147,7 @@ const ReadReviews = ({ course }) => {
                     buttonText='Favorite'
                     modalClass='single-course-modal-btn'
                     modalComponent={
-                        <AddFavorite courseId={course.id} userId={user.id}/>
+                        <AddFavorite course_id={course.id} user_id={user.id}/>
                     }
                     />
                 </div>
