@@ -1,7 +1,7 @@
 .reviews-summary {
     
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-top: 20px;
     border-bottom: 1px solid lightgray;
     padding-bottom: 10px;
@@ -16,19 +16,19 @@ th {
 }
 
 
-.post-review {
+.single-course-btn-div {
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
-.post-review-btn {
+.single-course-modal-btn {
     font-size: 14pt;
     padding: 10px;
     border-radius: 20px;
     background-color: darkgreen;
     color: white;
 }
-
 
 
 .user-review {

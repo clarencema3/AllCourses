@@ -5,6 +5,7 @@ import { clearState, fetchSingleCourse } from '../../store/courses';
 import ReadReviews from '../ReadReviews';
 import './SingleCourse.css'
 import Map from '../Map';
+import OpenModalButton from '../OpenModalButton';
 
 const SingleCourse = () => {
     const dispatch = useDispatch()
@@ -67,6 +68,7 @@ const SingleCourse = () => {
                     <strong>Description</strong>
                     <p>{course.description}</p>
                 </div>
+                
                 <div className='reviews-div'>
                     <ReadReviews course={course}/>
                 </div>

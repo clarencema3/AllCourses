@@ -27,7 +27,6 @@ function Map({ courseArr }) {
 
     //get coordinates from address if lat & lng are both 0(default values)
     const getSingleCoordinates = (course) => {
-        
         const parameter = {
             address: `${course.address}, ${course.city}, ${course.state}`
         }
@@ -47,7 +46,7 @@ function Map({ courseArr }) {
     }
     //The courseArr prop have different properties for favorites and single courses so need to check them and return differently
     const checkProperties = (course) => {
-        if (course.hasOwnProperty('latitude')) {
+        if (course?.hasOwnProperty('latitude')) {
             return course.latitude !== 0 && course.longitude !== 0 ? oneCourseCoords(course) : getSingleCoordinates(course) 
         } else {
             return course.course.latitude !== 0 && course.course.longitude !== 0 ? oneCourseCoords(course.course) : getSingleCoordinates(course.course)
@@ -57,28 +56,29 @@ function Map({ courseArr }) {
 
     return (
        <GoogleMap 
-       center={courseArr.length === 1 ?
+       center={courseArr?.length === 1 ?
             checkProperties(courseArr[0])
         : courseArr[0].course.latitude !== 0 && courseArr[0].course.longitude !== 0 ? oneCourseCoords(courseArr[0].course) : getSingleCoordinates(courseArr[0].course)
         } 
        zoom={courseArr.length === 1 ? 11 : 8} 
-       mapContainerStyle={{width: '100%', height: '100%'}}>
-        <div>
-            {courseArr.length === 1 ? 
-            courseArr.map(course => (
-                <Marker
-                key={course.id}
-                position={checkProperties(courseArr[0])}
-                />
-            )) :
-            courseArr.map(course => (
-                <Marker
-                key={course.id}
-                position={course.course.latitude !== 0 && course.course.longitude !== 0 ? oneCourseCoords(course.course) : getSingleCoordinates(course.course)}
-                />
-            ))
-        }
-        </div>
+       mapContainerStyle={{width: '100%', height: '100%'}}
+       >
+            <div>
+                {courseArr.length === 1 ? 
+                    courseArr.map(course => (
+                        <Marker
+                        key={course.id}
+                        position={checkProperties(courseArr[0])}
+                        />
+                    )) :
+                    courseArr.map(course => (
+                        <Marker
+                        key={course.id}
+                        position={course.course.latitude !== 0 && course.course.longitude !== 0 ? oneCourseCoords(course.course) : getSingleCoordinates(course.course)}
+                        />
+                    ))
+                }
+            </div>
        </GoogleMap>
     
     )
