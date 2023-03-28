@@ -1,5 +1,21 @@
-
+.favorites-map {
+    margin-top: 30px;
+    z-index: -1;
+}
 .favorites-div {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    height: 100%;
+}
+
+.empty-favorites {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.favorites-container {
+    height: 94vh;
 }

@@ -16,3 +16,20 @@ def get_favorites():
         favoriteDictionary['user'] = favorite.user.to_dict()
         favorite_arr.append(favoriteDictionary)
     return favorite_arr
+
+
+@favorite_routes.route('/', methods=['POST'])
+def add_to_favorites():
+    res = request.get_json()
+    form = FavoriteForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        favorite = Favorite(
+            course_id = res["course_id"],
+            user_id = res["user_id"]
+        )
+        db.session.add(favorite)
+        db.session.commit()
+        return favorite.to_dict()
+

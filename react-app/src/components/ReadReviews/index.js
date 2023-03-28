@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import CreateReviewModal from '../CreateReviewModal';
 import DeleteReviewModal from '../DeleteReviewModal';
 import EditReviewModal from '../EditReviewModal';
-
+import AddFavorite from '../AddFavorite';
 
 const ReadReviews = ({ course }) => {
     const reviewsArr = course.reviews;
@@ -94,9 +94,9 @@ const ReadReviews = ({ course }) => {
             return ''
         } else {
             return (
-                <div className='post-review'>
+                <div className='single-course-btn-div'>
                     <OpenModalButton 
-                    modalClass='post-review-btn'
+                    modalClass='single-course-modal-btn'
                     buttonText='Write review'
                     modalComponent={
                         <CreateReviewModal course={course} user={user}/>
@@ -142,6 +142,15 @@ const ReadReviews = ({ course }) => {
                     {numReviews()}
                 </div>
                 {writeReview()}
+                <div className='single-course-btn-div'>
+                    <OpenModalButton
+                    buttonText='Favorite'
+                    modalClass='single-course-modal-btn'
+                    modalComponent={
+                        <AddFavorite courseId={course.id} userId={user.id}/>
+                    }
+                    />
+                </div>
             </div>
             <div className='user-review-div'>
                 <div className='review-container'>
