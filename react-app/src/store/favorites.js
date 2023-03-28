@@ -27,8 +27,14 @@ export const fetchFavorites = () => async (dispatch) => {
     }
 }
 
-export const addFavorite = () => async (dispatch) => {
-    const response = await fetch('/api/favorites/')
+export const addFavorite = (favorite) => async (dispatch) => {
+    const response = await fetch('/api/favorites/', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(favorite)
+    })
 
     if (response.ok) {
         const data = await response.json()

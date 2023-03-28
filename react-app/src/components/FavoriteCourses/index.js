@@ -33,11 +33,11 @@ const ShowFavorites = () => {
                     <section className='fav-course-section'>
                         <div className='course-container white-space'>
                         {userFavorites.map(course => (
-                                <NavLink to={`/courses/${course.course.id}`} className='courseCard' key={course.course.id}>
-                                    <img src={course.course.photo} alt='course' onError={e => { e.currentTarget.src = "https://i.imgur.com/A02fsZ2.png" }}/>
-                                    <p className='course-p'>{course.course.name}</p>
-                                    <strong className='course-p-2'>{course.course.city}, {course.course.state}</strong>
-                                </NavLink>
+                            <NavLink to={`/courses/${course.course.id}`} className='courseCard' key={course.course.id}>
+                                <img src={course.course.photo} alt='course' onError={e => { e.currentTarget.src = "https://i.imgur.com/A02fsZ2.png" }}/>
+                                <p className='course-p'>{course.course.name}</p>
+                                <strong className='course-p-2'>{course.course.city}, {course.course.state}</strong>
+                            </NavLink>
                         ))}
                         </div>
                     </section>
