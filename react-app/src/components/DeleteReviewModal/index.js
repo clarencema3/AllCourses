@@ -18,12 +18,12 @@ const DeleteReviewModal = ({ review, course }) => {
 
     
     return (
-        <div className='delete-rev-div'>
+        <div className='modals-div'>
             <h1>Delete review?</h1>
             <p>Deleting a review will erase it permanently.</p>
             <div className='delete-rev-btn-div'>
-                <button className='delete-rev-btn' onClick={submit}>Delete</button>
-                <button className='keep-rev' onClick={closeModal}>Keep</button>
+                <button className='modal-btn' onClick={submit}>Delete</button>
+                <button className='modal-keep-btn' onClick={closeModal}>Keep</button>
             </div>
         </div>
     )
