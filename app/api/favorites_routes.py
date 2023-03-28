@@ -18,7 +18,7 @@ def get_favorites():
     return favorite_arr
 
 
-@favorite_routes.route('/', methods=['POST'])
+@favorite_routes.route('/new', methods=['POST'])
 def add_to_favorites():
     res = request.get_json()
     form = FavoriteForm()
@@ -32,4 +32,14 @@ def add_to_favorites():
         db.session.add(favorite)
         db.session.commit()
         return favorite.to_dict()
+
+
+@favorite_routes.route('/<int:id>', methods=['DELETE'])
+def delete_favorite(id):
+    favorite = Favorite.query.get(id)
+    if favorite:
+        db.session.delete(favorite)
+        db.session.commit()
+        return {"Response": f"Successfully deleted favorite."}
+
 
