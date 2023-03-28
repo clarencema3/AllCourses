@@ -1,5 +1,7 @@
 export const GET_FAVORITES = 'favorites/all'
 export const ADD_FAVORITE = 'favorite/add'
+export const DELETE_FAVORITE = 'favorite/delete'
+
 
 export const getFavorites = (favorites) => {
     return {
@@ -15,6 +17,13 @@ export const postFavorite = (favorite) => {
     }
 } 
 
+export const removeFavorite = (favoriteId) => {
+    return {
+        type: DELETE_FAVORITE,
+        favoriteId
+    }
+}
+
 
 export const fetchFavorites = () => async (dispatch) => {
     const response = await fetch('/api/favorites/')
@@ -28,7 +37,7 @@ export const fetchFavorites = () => async (dispatch) => {
 }
 
 export const addFavorite = (favorite) => async (dispatch) => {
-    const response = await fetch('/api/favorites/', {
+    const response = await fetch('/api/favorites/new', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -44,11 +53,26 @@ export const addFavorite = (favorite) => async (dispatch) => {
     }
 }
 
+export const deleteFavorite = (favoriteId) => async (dispatch) => {
+    const response = await fetch(`/api/favorites/${favoriteId}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        dispatch(removeFavorite(favoriteId))
+    }
+}
+
 const initialState = {}
 
 const favoriteReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch(action.type) {
+        case DELETE_FAVORITE:
+            newState.favorite = { ...state.favorite }
+            newState.favorites = { ...state.favorites }
+            delete newState.favorites[action.favoriteId]
+            return newState
         case ADD_FAVORITE:
             newState['favorite'] = action.favorite
             return newState

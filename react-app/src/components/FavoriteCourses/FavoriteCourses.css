@@ -19,3 +19,10 @@
 .favorites-container {
     height: 94vh;
 }
+
+.fav-delete-btn {
+    padding: 5px;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 15px;
+}
