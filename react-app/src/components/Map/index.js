@@ -16,7 +16,7 @@ function Map({ courseArr }) {
     if (!isLoaded) {
         return 'Loading'
     }
-    console.log(courseArr)
+   
     const oneCourseCoords = (course) => {
         const existingCoords = {
             lat: course.latitude, lng: course.longitude      
@@ -45,14 +45,20 @@ function Map({ courseArr }) {
         })
         
     }
+    //The courseArr prop have different properties for favorites and single courses so need to check them and return differently
+    const checkProperties = (course) => {
+        if (course.hasOwnProperty('latitude')) {
+            return course.latitude !== 0 && course.longitude !== 0 ? oneCourseCoords(course) : getSingleCoordinates(course) 
+        } else {
+            return course.course.latitude !== 0 && course.course.longitude !== 0 ? oneCourseCoords(course.course) : getSingleCoordinates(course.course)
+        }
+    }
 
-   
-   
-    
+
     return (
        <GoogleMap 
        center={courseArr.length === 1 ?
-            courseArr[0].latitude !== 0 && courseArr[0].longitude !== 0 ? oneCourseCoords(courseArr[0]) : getSingleCoordinates(courseArr[0])
+            checkProperties(courseArr[0])
         : courseArr[0].course.latitude !== 0 && courseArr[0].course.longitude !== 0 ? oneCourseCoords(courseArr[0].course) : getSingleCoordinates(courseArr[0].course)
         } 
        zoom={courseArr.length === 1 ? 11 : 8} 
@@ -62,7 +68,7 @@ function Map({ courseArr }) {
             courseArr.map(course => (
                 <Marker
                 key={course.id}
-                position={course.latitude !== 0 && course.longitude !== 0 ? oneCourseCoords(course) : getSingleCoordinates(course)}
+                position={checkProperties(courseArr[0])}
                 />
             )) :
             courseArr.map(course => (

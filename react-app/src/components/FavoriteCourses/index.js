@@ -10,13 +10,15 @@ const ShowFavorites = () => {
     const dispatch = useDispatch()
     const favorites = useSelector(state => state.favorites)
     const user = useSelector(state => state.session.user)
+
     useEffect(() => {
         dispatch(fetchFavorites())
     }, [dispatch])
-    
+
     if (!user) {
         history.push('/')
     }
+    
     if (!favorites) return null
     const courses = favorites?.favorites
     if (!courses) return null
