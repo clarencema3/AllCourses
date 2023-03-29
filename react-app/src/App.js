@@ -10,6 +10,7 @@ import SingleCourse from "./components/SingleCourse";
 import AddCourse from "./components/AddCourse";
 import UserCourses from "./components/UserCourses";
 import ShowFavorites from "./components/FavoriteCourses";
+import ShowCompleted from "./components/CompletedCourses";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <AllCourses />
+          </Route>
+          <Route path='/courses/completed'>
+            <ShowCompleted />
           </Route>
           <Route path='/courses/favorites'>
             <ShowFavorites />

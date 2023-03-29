@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.course_routes import course_routes
 from .api.review_routes import reviews_routes
 from .api.favorites_routes import favorite_routes
+from .api.completed_course_routes import completed_course_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -34,6 +35,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(course_routes, url_prefix='/api/courses')
 app.register_blueprint(reviews_routes, url_prefix='/api/reviews')
 app.register_blueprint(favorite_routes, url_prefix='/api/favorites')
+app.register_blueprint(completed_course_routes, url_prefix='/api/completed')
 db.init_app(app)
 Migrate(app, db)
 

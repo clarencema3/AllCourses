@@ -26,6 +26,7 @@ class Course(db.Model):
     user = db.relationship('User', back_populates='courses')
     reviews = db.relationship("Review", back_populates="course", cascade="all, delete-orphan")
     favorites = db.relationship("Favorite", back_populates="course", cascade="all, delete-orphan")
+    completed = db.relationship("CompleteCourse", back_populates="course", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

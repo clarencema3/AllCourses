@@ -5,7 +5,7 @@ import { clearState, fetchSingleCourse } from '../../store/courses';
 import ReadReviews from '../ReadReviews';
 import './SingleCourse.css'
 import Map from '../Map';
-import OpenModalButton from '../OpenModalButton';
+
 
 const SingleCourse = () => {
     const dispatch = useDispatch()

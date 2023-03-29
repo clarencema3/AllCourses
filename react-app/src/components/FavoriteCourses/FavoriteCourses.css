@@ -25,4 +25,9 @@
     background-color: darkgreen;
     color: white;
     border-radius: 15px;
+    width: 100%;
+}
+
+.fav-course-section {
+    overflow-y: scroll;
 }

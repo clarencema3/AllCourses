@@ -22,7 +22,6 @@ function Map({ courseArr }) {
             lat: course.latitude, lng: course.longitude      
         }
         return existingCoords
-        
     }
 
     //get coordinates from address if lat & lng are both 0(default values)
@@ -42,7 +41,6 @@ function Map({ courseArr }) {
             }
             return center
         })
-        
     }
     //The courseArr prop have different properties for favorites and single courses so need to check them and return differently
     const checkProperties = (course) => {
