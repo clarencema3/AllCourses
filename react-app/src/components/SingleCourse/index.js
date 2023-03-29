@@ -59,8 +59,8 @@ const SingleCourse = () => {
                         <p>Course Website:</p>
                         <a href={course.course_url} target="_blank" rel="noopener noreferrer">{course.course_url}</a>
                     </div>
-                    {/* <Map 
-                    courseArr={courseMapArr} */}
+                    <Map 
+                    courseArr={courseMapArr}
                     />
                 </div>
                 <br/>
