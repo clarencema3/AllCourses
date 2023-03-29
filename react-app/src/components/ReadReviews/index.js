@@ -6,6 +6,7 @@ import CreateReviewModal from '../CreateReviewModal';
 import DeleteReviewModal from '../DeleteReviewModal';
 import EditReviewModal from '../EditReviewModal';
 import AddFavorite from '../AddFavorite';
+import AddCompleted from '../AddCompleted';
 
 const ReadReviews = ({ course }) => {
     const reviewsArr = course.reviews;
@@ -148,6 +149,13 @@ const ReadReviews = ({ course }) => {
                     modalClass='single-course-modal-btn'
                     modalComponent={
                         <AddFavorite course_id={course.id} user_id={user.id}/>
+                    }
+                    />
+                    <OpenModalButton
+                    buttonText='Completed?'
+                    modalClass='single-course-modal-btn'
+                    modalComponent={
+                        <AddCompleted course_id={course.id} user_id={user.id}/>
                     }
                     />
                 </div>

@@ -18,7 +18,9 @@ class User(db.Model, UserMixin):
 
     reviews = db.relationship("Review", back_populates="user", cascade="all, delete-orphan")
     favorites = db.relationship("Favorite", back_populates="user", cascade="all, delete-orphan")
-    courses = db.relation('Course', back_populates="user", cascade="all, delete-orphan")
+    courses = db.relationship('Course', back_populates="user", cascade="all, delete-orphan")
+    completed = db.relationship('CompleteCourse', back_populates='user', cascade="all, delete-orphan")
+    
     
 
     @property

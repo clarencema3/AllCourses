@@ -1,7 +1,7 @@
 import React from 'react'
 import { useModal } from "../../context/Modal";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteFavorite, fetchFavorites } from "../../store/favorites";
+import { useDispatch } from "react-redux";
+import { deleteFavorite } from "../../store/favorites";
 
 
 const DeleteFavorite = ({ favoriteId }) => {

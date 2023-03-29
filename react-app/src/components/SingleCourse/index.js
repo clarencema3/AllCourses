@@ -5,7 +5,7 @@ import { clearState, fetchSingleCourse } from '../../store/courses';
 import ReadReviews from '../ReadReviews';
 import './SingleCourse.css'
 import Map from '../Map';
-import OpenModalButton from '../OpenModalButton';
+
 
 const SingleCourse = () => {
     const dispatch = useDispatch()
@@ -59,8 +59,8 @@ const SingleCourse = () => {
                         <p>Course Website:</p>
                         <a href={course.course_url} target="_blank" rel="noopener noreferrer">{course.course_url}</a>
                     </div>
-                    <Map 
-                    courseArr={courseMapArr}
+                    {/* <Map 
+                    courseArr={courseMapArr} */}
                     />
                 </div>
                 <br/>
