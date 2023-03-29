@@ -14,6 +14,8 @@ class CompleteCourse(db.Model):
     score = db.Column(db.Integer, nullable=False)
     feedback = db.Column(db.String(1000), nullable=False)
 
+    user = db.relationship('User', back_populates='completed')
+    course = db.relationship('Course', back_populates='completed')
 
     def to_dict(self):
         return {

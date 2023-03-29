@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired, Length, NumberRange
 
 
 class CompletedCourseForm(FlaskForm):
-    score = IntegerField('Score', validators=[DataRequired(), NumberRange(min=0)])
+    score = IntegerField('Score', validators=[DataRequired(), NumberRange(min=1, message='Score must be greater than 0')])
     feedback = TextAreaField('Feedback', validators=[DataRequired(), Length(min=5,max=1000, message='Feedback must be between 5 and 1000 characters')])

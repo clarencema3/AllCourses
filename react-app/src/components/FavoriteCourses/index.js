@@ -27,7 +27,7 @@ const ShowFavorites = () => {
     const favoritesArr = Object.values(courses)
     //filter favorites by current user logged on
     const userFavorites = favoritesArr.filter(favorite => favorite.user_id === user.id)
-    console.log(userFavorites)
+    
     return (
         <div className='favorites-container'>
             {userFavorites.length ? 
@@ -42,7 +42,7 @@ const ShowFavorites = () => {
                                     <strong className='course-p-2'>{course.course.city}, {course.course.state}</strong>
                                 </NavLink>
                                 <OpenModalButton 
-                                buttonText='delete'
+                                buttonText='Delete'
                                 modalClass='fav-delete-btn'
                                 modalComponent={
                                     <DeleteFavorite favoriteId={course.id}/>
@@ -60,7 +60,7 @@ const ShowFavorites = () => {
                     <h1>Favorites list is empty</h1>
                     <h2>Add a course to your favorites today!</h2>
                     <div>
-                        <img src='https://i.imgur.com/BH9H5J5.png'></img>
+                        <img src='https://i.imgur.com/BH9H5J5.png' alt='display for empty favorites list'></img>
                     </div>
                 </div>
             }

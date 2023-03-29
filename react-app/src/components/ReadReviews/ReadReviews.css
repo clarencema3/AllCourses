@@ -20,6 +20,7 @@ th {
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 5px;
 }
 
 .single-course-modal-btn {
@@ -28,6 +29,7 @@ th {
     border-radius: 20px;
     background-color: darkgreen;
     color: white;
+    width: 150px;
 }
 
 
@@ -65,3 +67,5 @@ th {
     display: flex;
     flex-direction: column-reverse;
 }
+
+
