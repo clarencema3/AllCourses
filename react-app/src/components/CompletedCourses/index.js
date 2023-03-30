@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import './CompletedCourse.css'
 import OpenModalButton from '../OpenModalButton';
 import DeleteCompletedCourse from "../DeleteCompletedModal";
+import EditCompletedCourse from "../EditCompletedCourse";
 
 const ShowCompleted = () => {
     const dispatch = useDispatch()
@@ -31,17 +32,24 @@ const ShowCompleted = () => {
                     {completedArr.map(course => (
                         <div className="completed-course-container">
                             <div className="course-info">
-                                <h3>{course.course.name}</h3>
-                                <p>Location: {course.course.address}, {course.course.city}, {course.course.state}</p>
+                                <h3>{course.course?.name}</h3>
+                                <p>Location: {course.course?.address}, {course.course?.city}, {course.course?.state}</p>
                             </div>
                             <div className="player-info-div">
                                 <p>Feedback: {course.feedback}</p>
                                 <p>Score: {course.score}</p>  
                                 <OpenModalButton 
                                 buttonText='Delete'
-                                modalClass='delete-completed-btn'
+                                modalClass='edit-delete-completed-btn'
                                 modalComponent={
                                     <DeleteCompletedCourse completedCourse={course}/>
+                                }
+                                />
+                                <OpenModalButton 
+                                buttonText='Edit'
+                                modalClass='edit-delete-completed-btn'
+                                modalComponent={
+                                    <EditCompletedCourse completedCourse={course}/>
                                 }
                                 />
                             </div>

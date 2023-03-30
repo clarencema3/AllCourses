@@ -55,4 +55,18 @@ def delete_completed(id):
         db.session.delete(course)
         db.session.commit()
         return {"Response": f"Successfully deleted course."}
+
+
+@completed_course_routes.route('/<int:id>', methods=['PUT'])
+def edit_completed(id):
+    course = CompleteCourse.query.get(id)
+    res = request.get_json()
+    form = CompletedCourseForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if course:
+        if form.validate_on_submit():
+            course.feedback = res["feedback"]
+            db.session.commit()
+            return course.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     
