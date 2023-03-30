@@ -45,7 +45,6 @@ export const addCompleted = (course) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json()
-        console.log('data in thunk from res',data)
         let normalizedData = {}
         normalizedData[data.id] = data
         dispatch(postCompleted(normalizedData))
