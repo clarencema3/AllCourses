@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { fetchSingleCourse, updateCourse } from '../../store/courses';
 
 
-
 function Map({ courseArr }) {
     const dispatch = useDispatch()
     const { isLoaded } = useJsApiLoader({

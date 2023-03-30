@@ -1,6 +1,8 @@
 export const GET_COMPLETED = 'completed/all'
 export const ADD_COMPLETED = 'completed/add'
 export const DELETE_COMPLETED = 'completed/delete'
+export const EDIT_COMPLETED = 'completed/edit'
+
 
 export const getCompleted = (courses) => {
     return {
@@ -20,6 +22,13 @@ export const removeCompleted = (completedCourseId) => {
     return {
         type: DELETE_COMPLETED,
         completedCourseId
+    }
+}
+
+export const editCompleted = (course) => {
+    return {
+        type: EDIT_COMPLETED,
+        course
     }
 }
 
@@ -69,11 +78,39 @@ export const deleteCompletedCourse = (completedCourseId) => async (dispatch) => 
     }
 }
 
+export const editCompletedCourse = (course) => async (dispatch) => {
+    const response = await fetch(`/api/completed/${course.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(course)
+    })
+
+    if (response.ok) {
+        const course = await response.json()
+        console.log('course in thunk as res', course)
+        dispatch(editCompleted(course))
+        return null
+    } else if (response.status < 500) {
+        const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+}
+
 const initialState = {}
 
 const completedReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch (action.type) {
+        case EDIT_COMPLETED:
+            newState.completed = { ...state.completed }
+            newState.completed[action.course.id] = action.course
+            return newState
         case DELETE_COMPLETED:
             newState.completed = { ...state.completed }
             newState.course = { ...state.course}

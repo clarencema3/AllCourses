@@ -14,12 +14,13 @@
     background-color: whitesmoke;
 }
 
-.delete-completed-btn {
+.edit-delete-completed-btn {
     background-color: darkgreen;
     color: white;
     padding: 5px;
     border-radius: 15px;
     width: 15%;
+    margin-right: 10px;
 }
 
 .player-info-div {
