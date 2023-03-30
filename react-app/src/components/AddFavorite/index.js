@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, fetchFavorites } from "../../store/favorites";
+import DeleteFavorite from '../DeleteFavorite'
 
 const AddFavorite = ({ course_id, user_id }) => {
     const { closeModal } = useModal()
@@ -35,7 +36,7 @@ const AddFavorite = ({ course_id, user_id }) => {
                 <button className='modal-btn' onClick={submit}>Add</button>
                 <button className="modal-keep-btn" onClick={closeModal}>Close</button> 
             </> :
-                <h2>Course is already in your favorites list</h2>
+                <DeleteFavorite favoriteId={existingFavorite.id}/>
             }
         </div>
     )
