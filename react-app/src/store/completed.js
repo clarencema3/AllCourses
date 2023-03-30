@@ -89,7 +89,6 @@ export const editCompletedCourse = (course) => async (dispatch) => {
 
     if (response.ok) {
         const course = await response.json()
-        console.log('course in thunk as res', course)
         dispatch(editCompleted(course))
         return null
     } else if (response.status < 500) {

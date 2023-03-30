@@ -11,7 +11,7 @@ const EditCompletedCourse = ({ completedCourse }) => {
     const [submitted, setSubmitted] = useState(false)
     const [errors, setErrors] = useState([])
 
-    console.log(completedCourse)
+    
     const submit = async (e) => {
         e.preventDefault()
         setSubmitted(true)
