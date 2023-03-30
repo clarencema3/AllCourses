@@ -56,7 +56,7 @@ const AddCourse = () => {
     
     return (
         <div className="create-form-div">
-            <form onSubmit={handleSubmit} className='course-form'>
+            <form onSubmit={handleSubmit} className='course-form' encType="multipart/form-data">
                 <h1>Add a Course</h1>
                 <ul>
                     {errors && errors.map((error, idx) => (
@@ -138,7 +138,7 @@ const AddCourse = () => {
                         <div>
                             Photo of course
                         </div>
-                        <input className='form-input' type="url" value={photo} onChange={(e) => setPhoto(e.target.value)} required/>
+                        <input className='form-input' type="file" accept="image/*" value={photo} onChange={(e) => setPhoto(e.target.files[0])} required/>
                     </div>
                     <div className="sign-button-div">
 						<button className="sign-form-button" type="submit">Add your course</button>

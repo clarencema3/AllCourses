@@ -95,3 +95,5 @@ def edit_a_course(id):
         db.session.commit()
         return course.to_dict()
         
+
+
