@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Course
 from app.forms import CourseForm
 from flask_login import current_user, login_user, logout_user, login_required
+from app.api.aws_helpers import get_unique_filename, upload_file_to_s3
+
 
 course_routes = Blueprint('course', __name__)
 
@@ -40,28 +42,36 @@ def get_single_course(id):
 
 @course_routes.route('/', methods=["POST"])
 def add_new_course():
-    res = request.get_json()
+    # res = request.get_json()
     form = CourseForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    
     if form.validate_on_submit():
+        photo = form.data['photo']
+        photo.filename = get_unique_filename(photo.filename)
+        upload = upload_file_to_s3(photo)
+        if "url" not in upload:
+            errors['photo'] = 'Error in uploading your photo'
+            return jsonify({ 'errors': errors }), 400
+
         course = Course(
-            name=res["name"],
-            description=res["description"],
-            price=res["price"],
-            type=res["type"],
-            latitude=res["latitude"],
-            longitude=res["longitude"],
-            address=res["address"],
-            city=res["city"],
-            state=res["state"],
-            country=res["country"],
-            course_url=res["course_url"],
-            photo=res['photo'],
-            user_id=res["user_id"]
+            name=form.data["name"],
+            description=form.data["description"],
+            price=form.data["price"],
+            type=form.data["type"],
+            latitude=form.data["latitude"],
+            longitude=form.data["longitude"],
+            address=form.data["address"],
+            city=form.data["city"],
+            state=form.data["state"],
+            country=form.data["country"],
+            course_url=form.data["course_url"],
+            photo=upload["url"],
+            user_id=current_user.id
         )
         db.session.add(course)
         db.session.commit()
-        return course.to_dict()
+        return course.to_dict() 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

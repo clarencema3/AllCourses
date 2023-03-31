@@ -28,8 +28,7 @@ class CourseForm(FlaskForm):
     city = StringField('City', validators=[DataRequired(message='City is required')])
     state = StringField('State', validators=[DataRequired(message='State is required')])
     country = StringField('Country', validators=[DataRequired(message='Country is required')])
-    # photo = URLField('Photo', validators=[DataRequired(), URL()])
-    photo = FileField("Photo", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    photo = FileField("Photo", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS), message='Files must be .png, .jpg, or .jpeg')])
     course_url = URLField('Course Website', validators=[DataRequired(message='Course website is required'), URL()])
     
 

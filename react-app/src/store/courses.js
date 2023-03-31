@@ -72,14 +72,11 @@ export const fetchSingleCourse = (courseId) => async (dispatch) => {
 export const addNewCourse = (course) => async (dispatch) => {
     const response = await fetch(`/api/courses/`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(course)
+        body: course
     })
-
+    
     if (response.ok) {
-        const data = await response.json();
+        const data  = await response.json();
         dispatch(addCourse(data))
         return null
     } else if (response.status < 500) {
