@@ -94,9 +94,98 @@ def seed_courses():
         course_url='http://www.lincolnparkgolfcourse.com/',
         user_id=3
     )
-    
+    course7 = Course(
+        name='Baylands Golf Links',
+        description='Opened in 1956, Palo Alto Municipal GC adjacent the Palo Alto Airport was re-designed by renowned architect Forrest Richardson and reopened as Baylands GL in 2018. With a fresh look, including the removal of 400 non-native trees, the 6,680-yard walkable layout features five par 3s, five par 5s and 55 acres of native Baylands vegetation and wetlands areas through which the San Fransisquito Creek, a historic waterway, runs acting as a major flood conveyance stream',
+        price=115.00,
+        type=18,
+        latitude=37.4536930743,
+        longitude=-122.116007682,
+        address='1875 Embarcadero Rd',
+        city='Palo Alto',
+        state='California',
+        country='United States of America',
+        photo='https://i.imgur.com/biEfwls.jpg',
+        course_url='https://baylandsgolflinks.com/',
+        user_id=1
+    )
+    course8 = Course(
+        name='Pasatiempo Golf Course',
+        description='Less than an hour’s drive north from the Monterey Peninsula, Pasatiempo GC (1929) was designed by Alister MacKenzie (Augusta National, Cypress Point). It was considered the renowned Scottish architect’s favorite 18-hole creation and where his American home still borders the sixth fairway. Consistently ranked among America’s top public golf courses, this historic 6,495-yard championship venue is a must-play on the Bay Area’s golf bucket list.',
+        price=345.00,
+        type=18,
+        latitude=37.004394,
+        longitude=-122.025796,
+        address='20 Clubhouse Rd',
+        city='Santa Cruz',
+        state='California',
+        country='United States of America',
+        photo='https://i.imgur.com/jZSN1Nv.jpg',
+        course_url='https://www.pasatiempo.com/',
+        user_id=1
+    )
+    course9 = Course(
+        name = 'Hiddenbrooke Golf Club',
+        description='A former host to the LPGA’s Samsung World Championships of Golf (2000-2002), the acclaimed an Arnold Palmer Signature golf course is nestled in a scenic secluded valley just north of San Francisco. At 6,619 yards with dramatic elevation changes, large challenging greens and water on 14 of the 18 holes, the award-winning (4.5-star rating from Golf Digest) Hiddenbrooke GC provides five sets of tees to accommodate beginning to advanced golfers.',
+        price=49.00,
+        type=18,
+        latitude=38.1556349,
+        longitude=-122.179357,
+        address='1095 Hiddenbrooke Pkwy',
+        city='Vallejo',
+        state='California',
+        country='United States of America',
+        photo= 'https://i.imgur.com/qVR03IO.png',
+        course_url='https://www.hiddenbrookegolf.com/',
+        user_id=2
+    )
+    course10 = Course(
+        name = 'Pelican Hill Golf Club',
+        description = 'Located in Newport Beach, Pelican Hill features two courses with stunning ocean views and challenging layouts. The North Course has hosted multiple professional tournaments.',
+        price = 195.00, 
+        type= 18,
+        latitude = 33.6044, 
+        longitude = -117.8378, 
+        address = '22701 S Pelican Hill Rd', 
+        city = 'Newport Beach',
+        state = 'California',
+        country = 'USA',
+        photo = 'https://i.imgur.com/1kq7tYh.png',
+        course_url = 'https://www.golfpelicanhill.com/',
+        user_id = 2
+    )
+    course11 = Course(
+        name="Olympic Club Golf Course",
+        description="Located in San Francisco, the Olympic Club has hosted multiple U.S. Opens and other major tournaments. The course features challenging hills and tight fairways.",
+        type=18,
+        price=300.00, 
+        latitude=37.7176, 
+        longitude=-122.4945, 
+        address="599 Skyline Blvd", 
+        city="San Francisco", 
+        state="California", 
+        country="USA", 
+        photo='https://i.imgur.com/kjhyZol.jpg',
+        course_url="https://www.olyclub.com/golf/",
+        user_id = 3
+    )
+    course12 = Course(
+        name="La Quinta Resort & Club",
+        description="Located in Palm Springs, La Quinta Resort features five courses designed by famous architects such as Pete Dye and Jack Nicklaus. The Mountain Course has hosted the PGA Tour's CareerBuilder Challenge.", 
+        type=18,
+        price=155.00, 
+        latitude=33.6965, 
+        longitude=-116.3109, 
+        address="49-499 Eisenhower Dr", 
+        city="La Quinta", 
+        state="California", 
+        country="USA",
+        photo='https://i.imgur.com/xQyD2Gi.png', 
+        course_url="https://www.laquintaresort.com/golf/",
+        user_id = 3
+    )
 
-    db.session.add_all([course1, course2, course3, course4, course5, course6])
+    db.session.add_all([course1, course2, course3, course4, course5, course6, course7, course8, course9, course10, course11, course12])
     db.session.commit()
     
 

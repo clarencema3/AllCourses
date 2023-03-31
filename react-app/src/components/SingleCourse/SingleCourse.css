@@ -34,7 +34,9 @@
     position: relative;
     bottom: 150px;
     font-size: 18pt;
-    color: white;
+    color: #efefec;
+    font-weight: bolder;
+    text-shadow: black 1px 1px 5px;
     margin:10px;
 }
 
