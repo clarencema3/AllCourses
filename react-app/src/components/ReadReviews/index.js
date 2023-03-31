@@ -148,14 +148,14 @@ const ReadReviews = ({ course }) => {
                     buttonText='Favorite'
                     modalClass='single-course-modal-btn'
                     modalComponent={
-                        <AddFavorite course_id={course.id} user_id={user.id}/>
+                        <AddFavorite course_id={course?.id} user_id={user?.id}/>
                     }
                     />
                     <OpenModalButton
                     buttonText='Completed?'
                     modalClass='single-course-modal-btn'
                     modalComponent={
-                        <AddCompleted course_id={course.id} user_id={user.id}/>
+                        <AddCompleted course_id={course?.id} user_id={user?.id}/>
                     }
                     />
                 </div>

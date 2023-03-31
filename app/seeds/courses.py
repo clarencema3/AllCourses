@@ -157,6 +157,7 @@ def seed_courses():
     course11 = Course(
         name="Olympic Club Golf Course",
         description="Located in San Francisco, the Olympic Club has hosted multiple U.S. Opens and other major tournaments. The course features challenging hills and tight fairways.",
+        type=18,
         price=300.00, 
         latitude=37.7176, 
         longitude=-122.4945, 
@@ -171,6 +172,7 @@ def seed_courses():
     course12 = Course(
         name="La Quinta Resort & Club",
         description="Located in Palm Springs, La Quinta Resort features five courses designed by famous architects such as Pete Dye and Jack Nicklaus. The Mountain Course has hosted the PGA Tour's CareerBuilder Challenge.", 
+        type=18,
         price=155.00, 
         latitude=33.6965, 
         longitude=-116.3109, 
