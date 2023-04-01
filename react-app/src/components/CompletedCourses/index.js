@@ -22,7 +22,7 @@ const ShowCompleted = () => {
 
     if (!completed) return null
     const completedArr = Object.values(completed)
-    console.log(completedArr)
+   
     return (
         <div className="completed-course-div">
             <h2>Your completed courses</h2>

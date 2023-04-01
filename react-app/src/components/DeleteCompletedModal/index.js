@@ -8,7 +8,7 @@ import { deleteCompletedCourse } from '../../store/completed'
 const DeleteCompletedCourse = ({ completedCourse }) => {
     const { closeModal } = useModal()
     const dispatch = useDispatch()
-    console.log(completedCourse)
+
 
     const submit = (e) => {
         e.preventDefault()
