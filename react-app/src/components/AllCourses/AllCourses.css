@@ -19,6 +19,7 @@ img {
     bottom: 250px;
     color:white;
     font-size: 24pt;
+    text-shadow: black 1px 1px 5px;
 }
 
 .course-container {
@@ -81,6 +82,7 @@ img {
     padding: 4px 8px;
     color: white;
     font-weight: bold;
+    text-shadow: black 1px 1px 5px;
   }
 
   .course-container .course-p-2 {
@@ -89,5 +91,5 @@ img {
     left: 5px;
     padding: 0px 8px;
     color: white;
-    
+    text-shadow: black 1px 1px 5px;
   }
