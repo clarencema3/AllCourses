@@ -16,3 +16,9 @@
     background-color: white;
     border-radius: 20px;
 }
+
+.delete-rev-btn-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
