@@ -41,7 +41,8 @@ function Map({ courseArr }) {
             return center
         })
     }
-    //The courseArr prop have different properties for favorites and single courses so need to check them and return differently
+    
+    //The courseArr prop have different properties for favorites and single courses states so need to check them and return differently
     const checkProperties = (course) => {
         if (course?.hasOwnProperty('latitude')) {
             return course.latitude !== 0 && course.longitude !== 0 ? oneCourseCoords(course) : getSingleCoordinates(course) 
