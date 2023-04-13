@@ -72,25 +72,23 @@ export const fetchSingleCourse = (courseId) => async (dispatch) => {
 export const addNewCourse = (course) => async (dispatch) => {
     const response = await fetch(`/api/courses/`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(course)
+        body: course
     })
-
+   
     if (response.ok) {
-        const data = await response.json();
+        const data  = await response.json();
         dispatch(addCourse(data))
         return null
     } else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) {
-			return data.errors;
-		}
-	} else {
-		return ["An error occurred. Please try again."];
-	}
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
+    }
 }
+
 
 export const deleteCourse = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}`, {
