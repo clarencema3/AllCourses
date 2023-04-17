@@ -36,7 +36,6 @@ const EditCourseModal = ({course}) => {
         course.state = state
         course.country = country
         course.course_url = course_url
-        course.photo = photo
         dispatch(updateCourse(course))
         dispatch(fetchSingleCourse(course.id))
         closeModal()
@@ -117,12 +116,6 @@ const EditCourseModal = ({course}) => {
                             Course Website
                         </div>
                         <input className='form-input' type="url" value={course_url} onChange={(e) => setCourse_url(e.target.value)} required/>
-                    </div>
-                    <div className="form-section">
-                        <div>
-                            Photo of course
-                        </div>
-                        <input className='form-input' type="url" value={photo} onChange={(e) => setPhoto(e.target.value)} required/>
                     </div>
                     <div className="sign-button-div">
 						<button className="sign-form-button" type="submit">Update your course</button>

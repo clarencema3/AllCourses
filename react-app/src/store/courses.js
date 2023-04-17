@@ -6,6 +6,7 @@ export const ADD_COURSE = 'course/add'
 export const DELETE_COURSE = 'course/delete'
 export const EDIT_COURSE = 'course/edit'
 
+
 //action creators
 export const clearState = () => {
     return {
@@ -47,6 +48,7 @@ export const editCourse = (course) => {
         course
     }
 }
+
 
 //thunks
 export const fetchCourses = () => async (dispatch) => {
@@ -114,6 +116,18 @@ export const updateCourse = (course) => async (dispatch) => {
         dispatch(editCourse(course))
     }
 } 
+
+export const updatePhoto = (courseId, photo) => async (dispatch) => {
+    const response = await fetch(`/api/courses/photo/${courseId}`, {
+        method: "PUT",
+        body: photo
+    })
+
+    if (response.ok) {
+        const course = await response.json()
+        dispatch(editCourse(course))
+    }
+}
 
 const initialState = {};
 
