@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Course
-from app.forms import CourseForm
+from app.forms import CourseForm, PhotoForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.api.aws_helpers import get_unique_filename, upload_file_to_s3
 
@@ -42,7 +42,7 @@ def get_single_course(id):
 
 @course_routes.route('/', methods=["POST"])
 def add_new_course():
-    # res = request.get_json()
+   
     form = CourseForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
    
@@ -85,6 +85,25 @@ def delete_a_course(id):
         return {"Response": f"Successfully deleted course."}
 
 
+@course_routes.route('/photo/<int:id>', methods=["PUT"])
+def edit_photo(id):
+    course = Course.query.get(id)
+    form = PhotoForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+   
+    if form.validate_on_submit():
+        photo = form.data['photo']
+        photo.filename = get_unique_filename(photo.filename)
+        upload = upload_file_to_s3(photo)
+        if "url" not in upload:
+            errors['photo'] = 'Error in uploading your photo'
+            return jsonify({ 'errors': errors }), 400
+        course.photo=upload["url"]
+        db.session.commit()
+        return course.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 @course_routes.route('/<int:id>', methods=["PUT"])
 def edit_a_course(id):
     course = Course.query.get(id)
@@ -101,7 +120,10 @@ def edit_a_course(id):
         course.state=res["state"]
         course.country=res["country"]
         course.course_url=res["course_url"]
-        course.photo=res['photo']
         db.session.commit()
         return course.to_dict()
+
+
+        
+            
         

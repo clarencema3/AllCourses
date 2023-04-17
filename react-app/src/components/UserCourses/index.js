@@ -6,6 +6,7 @@ import './UserCourses.css'
 import OpenModalButton from "../OpenModalButton";
 import DeleteCourseModal from './DeleteCourseModal';
 import EditCourseModal from './EditCourseModal';
+import EditPhoto from './EditCoursePhoto';
 
 
 const UserCourses = () => {
@@ -51,6 +52,13 @@ const UserCourses = () => {
                                 buttonText='edit'
                                 modalComponent={
                                     <EditCourseModal course={course} />
+                                }
+                                />
+                                <OpenModalButton
+                                modalClass='edit-delete-user-course'
+                                buttonText='photo'
+                                modalComponent={
+                                    <EditPhoto course={course} />
                                 }
                                 />
                                 <OpenModalButton 
