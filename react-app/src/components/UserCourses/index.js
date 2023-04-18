@@ -42,6 +42,13 @@ const UserCourses = () => {
                                 <img src={course.photo} alt='course' onError={e => { e.currentTarget.src = "https://i.imgur.com/A02fsZ2.png" }}/>
                             </div>
                         </NavLink>
+                        <OpenModalButton
+                        modalClass='edit-delete-user-course edit-photo'
+                        buttonText={<i className="fas fa-camera" />}
+                        modalComponent={
+                            <EditPhoto course={course} />
+                        }
+                        />
                         <div className='user-course-info' >
                             <div>
                                 <p className='user-course-name'>{course.name}</p>
@@ -52,13 +59,6 @@ const UserCourses = () => {
                                 buttonText='edit'
                                 modalComponent={
                                     <EditCourseModal course={course} />
-                                }
-                                />
-                                <OpenModalButton
-                                modalClass='edit-delete-user-course'
-                                buttonText='photo'
-                                modalComponent={
-                                    <EditPhoto course={course} />
                                 }
                                 />
                                 <OpenModalButton 

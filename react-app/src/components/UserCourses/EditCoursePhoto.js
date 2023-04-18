@@ -30,13 +30,11 @@ const EditPhoto = ({ course }) => {
         <div className='edit-photo-div'>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="form-section">
-                    <div>
-                        Photo of course
-                    </div>
+                    <h1>Change course photo?</h1>
                     <input className='form-input' type="file" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} required/>
                 </div>
                 <div className="sign-button-div">
-                    <button className="sign-form-button" type="submit">Add your course</button>
+                    <button className="sign-form-button" type="submit">Edit photo</button>
                 </div>
             </form>
         </div>
