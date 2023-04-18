@@ -6,6 +6,7 @@ import './UserCourses.css'
 import OpenModalButton from "../OpenModalButton";
 import DeleteCourseModal from './DeleteCourseModal';
 import EditCourseModal from './EditCourseModal';
+import EditPhoto from './EditCoursePhoto';
 
 
 const UserCourses = () => {
@@ -41,6 +42,13 @@ const UserCourses = () => {
                                 <img src={course.photo} alt='course' onError={e => { e.currentTarget.src = "https://i.imgur.com/A02fsZ2.png" }}/>
                             </div>
                         </NavLink>
+                        <OpenModalButton
+                        modalClass='edit-delete-user-course edit-photo'
+                        buttonText={<i className="fas fa-camera" />}
+                        modalComponent={
+                            <EditPhoto course={course} />
+                        }
+                        />
                         <div className='user-course-info' >
                             <div>
                                 <p className='user-course-name'>{course.name}</p>
