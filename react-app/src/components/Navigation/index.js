@@ -5,9 +5,10 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 
+
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
-
+	
 	let userLinks
 	if (sessionUser) {
 		userLinks = (
@@ -19,6 +20,7 @@ function Navigation({ isLoaded }){
 			</div>
 		)
 	}
+
 
 	return (
 		<div className='nav-container white-space'>

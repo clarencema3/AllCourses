@@ -18,6 +18,8 @@
 
 .favorites-container {
     height: 94vh;
+    border-top: 2px solid lightgray;
+    margin-top: 10px;
 }
 
 .fav-delete-btn {
@@ -30,4 +32,6 @@
 
 .fav-course-section {
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updatePhoto, fetchSingleCourse } from '../../store/courses';
+import { updatePhoto } from '../../store/courses';
 import { useModal } from '../../context/Modal';
 import { useHistory } from 'react-router-dom';
 
