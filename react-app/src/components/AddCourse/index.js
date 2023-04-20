@@ -45,7 +45,6 @@ const AddCourse = () => {
         formData.append("course_url", course_url);
         formData.append("photo", photo);
        
-        console.log(formData.get('photo'))
         const data = await dispatch(addNewCourse(formData))
         if (data) {
             setErrors(data)

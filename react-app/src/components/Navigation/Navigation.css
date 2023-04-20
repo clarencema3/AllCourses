@@ -14,8 +14,9 @@
   display: flex;
   justify-content: space-between;
   height: 40px;
-  align-items: center;
+  
   margin-top: 1%;
+  margin-bottom: 10px;
 }
 
 .nav-home {
@@ -34,6 +35,8 @@
   color: darkgreen;
   font-size: 18pt;
   font-weight: bold;
+  position: relative;
+  top: 5px;
 }
 
 .user-btn-div {
@@ -138,6 +141,42 @@
 }
 
 .login-sign-btn:hover {
+  background-color: lightgray;
+}
+
+.nav-search {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 50%;
+}
+
+.nav-search-bar {
+  border-radius: 15px;
+  border: 2px solid lightgray;
+  padding: 15px;
+  height: 5px;
+  position: relative;
+  width: 95%;
+}
+
+.search-dropdown {
+  position: relative;
+  z-index: 1;
+  background-color: white;
+  padding: 10px;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  width: 95%;
+  min-width: 300px;
+}
+
+.search-results {
+  cursor: pointer;
+  display: flex;
+}
+
+.search-results:hover{
   background-color: lightgray;
 }
 
