@@ -16,6 +16,7 @@ const ShowAllCourses = () => {
     if (!courses) {
         return <div>Loading...</div>
     }
+    
     const coursesArr = Object.values(courses)
     
     const userLoggedIn = () => {
@@ -34,7 +35,6 @@ const ShowAllCourses = () => {
         }
     }
     
-
     return (
         <div className='home-container'>
             <div className='home-img-div'>

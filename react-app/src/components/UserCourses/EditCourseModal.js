@@ -13,24 +13,21 @@ const EditCourseModal = ({course}) => {
     const [description, setDescription] = useState(course.description)
     const [price, setPrice] = useState(course.price);
     const [type, setType] = useState(course.type);
-    const [lat, setLat] = useState(course.latitude);
-    const [lng, setLng] = useState(course.longitude);
     const [address, setAddress] = useState(course.address);
     const [city, setCity] = useState(course.city);
     const [state, setState] = useState(course.state);
     const [country, setCountry] = useState(course.country);
     const [course_url, setCourse_url] = useState(course.course_url);
-    const [photo, setPhoto] = useState(course.photo);
     
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         course.name = name
         course.description = description
         course.price = price
         course.type = type
-        course.latitude = lat
-        course.longitude = lng
+        course.latitude = Number(0)
+        course.longitude = Number(0)
         course.address = address
         course.city = city
         course.state = state
@@ -57,7 +54,7 @@ const EditCourseModal = ({course}) => {
                         <div>
                             Description
                         </div>
-                        <textarea minLength={5} className='form-input' rows={15} type="text" value={description} onChange={(e) => setDescription(e.target.value)} required/>
+                        <textarea minLength={5} className='form-input-text' rows={15} cols={50} type="text" value={description} onChange={(e) => setDescription(e.target.value)} required/>
                     </div>
                     <div className="form-section">
                         <div>
@@ -74,18 +71,6 @@ const EditCourseModal = ({course}) => {
                             <option value={+9}>9 Hole</option>
                             <option value={+18}>18 Hole</option>
                         </select>
-                    </div>
-                    <div className="form-section">
-                        <div>
-                            Latitude
-                        </div>
-                        <input className='form-input' type="number" value={lat} onChange={(e) => setLat(e.target.value)}/>
-                    </div>
-                    <div className="form-section">
-                        <div>
-                            Longitude
-                        </div>
-                        <input className='form-input' type="number" value={lng} onChange={(e) => setLng(e.target.value)} />
                     </div>
                     <div className="form-section">
                         <div>

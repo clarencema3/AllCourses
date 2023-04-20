@@ -29,7 +29,6 @@ const AddCourse = () => {
         history.push('/')
     }
    
-    const userId = user?.id
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData()
@@ -37,15 +36,14 @@ const AddCourse = () => {
         formData.append("description", description);
         formData.append("price", Number(price));
         formData.append("type", Number(type));
-        formData.append("latitude", Number(lat) || Number(0));
-        formData.append("longitude", Number(lng) || Number(0));
+        formData.append("latitude", Number(0));
+        formData.append("longitude", Number(0));
         formData.append("address", address);
         formData.append("city", city);
         formData.append("state", state);
         formData.append("country", country);
         formData.append("course_url", course_url);
         formData.append("photo", photo);
-       
        
         const data = await dispatch(addNewCourse(formData))
         if (data) {
@@ -95,18 +93,6 @@ const AddCourse = () => {
                     </div>
                     <div className="form-section">
                         <div>
-                            Latitude
-                        </div>
-                        <input className='form-input' type="number" value={lat} onChange={(e) => setLat(e.target.value)}/>
-                    </div>
-                    <div className="form-section">
-                        <div>
-                            Longitude
-                        </div>
-                        <input className='form-input' type="number" value={lng} onChange={(e) => setLng(e.target.value)} />
-                    </div>
-                    <div className="form-section">
-                        <div>
                             Address
                         </div>
                         <input className='form-input' type="text" value={address} onChange={(e) => setAddress(e.target.value)} required/>
@@ -133,7 +119,7 @@ const AddCourse = () => {
                         <div>
                             Course Website
                         </div>
-                        <input className='form-input' type="url" value={course_url} onChange={(e) => setCourse_url(e.target.value)} required/>
+                        <input className='form-input' type="url" value={course_url} onChange={(e) => setCourse_url(e.target.value)} placeholder='Ex: https://www.google.com' required/>
                     </div>
                     <div className="form-section">
                         <div>

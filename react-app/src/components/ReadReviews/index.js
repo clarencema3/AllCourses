@@ -139,6 +139,7 @@ const ReadReviews = ({ course }) => {
                     </table>
                 </div>
                 <div className='review-avg'>
+                    <b>Average Rating</b>
                     {getAvgRating()}
                     {numReviews()}
                 </div>
