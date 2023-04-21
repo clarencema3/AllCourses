@@ -22,13 +22,13 @@ const ShowAllCourses = () => {
     const userLoggedIn = () => {
         if (user) {
             return (
-                <div className='welcome-user'>
+                <div className='welcome-user hidden'>
                     <h1>Today's the day, {user.first_name}</h1>
                 </div>
             )
         } else {
             return (
-                <div className='welcome-user'>
+                <div className='welcome-user hidden'>
                     <h1>Find your outdoors</h1>
                 </div>
             )
