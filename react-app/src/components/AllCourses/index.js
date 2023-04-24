@@ -51,6 +51,18 @@ const ShowAllCourses = () => {
                     
                 ))}
             </div>
+            <footer>
+                <h2>Developer Links</h2>
+                <div>
+                    <span className="creator-names">
+                        <a href="https://github.com/clarencema3" target="_blank" rel="noopener noreferrer" ><i class="fab fa-github dev-links" /></a>
+                    </span>
+                    <span className="creator-names">
+                        <a href="https://www.linkedin.com/in/clarence-ma-93bb45258/" target="_blank" rel="noopener noreferrer" ><i class="fab fa-linkedin dev-links" /></a>
+                    </span>
+                </div>
+                
+            </footer>
         </div>
     )
 }

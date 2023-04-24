@@ -43,59 +43,70 @@ img {
     box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.2);
   }
   
-  .course-container .courseCard::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: black;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    transition: opacity 0.4s ease-out;
-  }
-  
-  .course-container .courseCard:hover::before {
-    opacity: .4;
-  }
-  
-  .course-container .courseCard:hover img {
-    transform: scale(1.05);
-  }
-  
-  .course-container .courseCard img {
-    transition: transform 0.4s ease-out;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  
-  }
+.course-container .courseCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: black;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  transition: opacity 0.4s ease-out;
+}
 
-  .course-container .course-p {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    padding: 4px 8px;
-    color: white;
-    font-weight: bold;
-    text-shadow: black 1px 1px 5px;
-  }
+.course-container .courseCard:hover::before {
+  opacity: .4;
+}
 
-  .course-container .course-p-2 {
-    position: absolute;
-    bottom: 0.1px;
-    left: 5px;
-    padding: 0px 8px;
-    color: white;
-    text-shadow: black 1px 1px 5px;
-  }
+.course-container .courseCard:hover img {
+  transform: scale(1.05);
+}
 
-  @media (max-width: 1024px) {
-    .hidden {
-      display: none;
-    }
+.course-container .courseCard img {
+  transition: transform 0.4s ease-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.course-container .course-p {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  padding: 4px 8px;
+  color: white;
+  font-weight: bold;
+  text-shadow: black 1px 1px 5px;
+}
+
+.course-container .course-p-2 {
+  position: absolute;
+  bottom: 0.1px;
+  left: 5px;
+  padding: 0px 8px;
+  color: white;
+  text-shadow: black 1px 1px 5px;
+}
+
+@media (max-width: 1024px) {
+  .hidden {
+    display: none;
   }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+.dev-links {
+  font-size: 40px;
+}
