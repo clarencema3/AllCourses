@@ -32,6 +32,11 @@ Favorites
 
 ![Favorites](/assets/favorites.png)
 
+To do list
+-----------------
+
+* Media queries for smaller/larger screen resolution
+
 Contact Information:
 -----------------
 * clarencema@live.com
