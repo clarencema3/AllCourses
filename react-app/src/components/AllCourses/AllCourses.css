@@ -93,3 +93,9 @@ img {
     color: white;
     text-shadow: black 1px 1px 5px;
   }
+
+  @media (max-width: 1024px) {
+    .hidden {
+      display: none;
+    }
+  }
